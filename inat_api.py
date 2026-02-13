@@ -3,12 +3,13 @@ import hashlib
 import json
 import random
 import re
+import secrets
 import socket
 from string import ascii_uppercase, ascii_lowercase, digits
 import time
 from datetime import date
 from sys import exit
-from both_api import build_request_URL, request_pause, careful_request
+from both_api import build_request_URL, request_pause, careful_request, MaxRequestAttemptsExceeded
 
 
 USER_AGENT = {"User-Agent" : "Mushroom Observer/iNaturalist Mirror"}
@@ -182,7 +183,7 @@ def get_JWT_PKCE():
 
     ###### generate verifier/challenge pair ######
 
-    code_verifier = "".join([random.choice(VERIFIER_CHARACTERS) for i in range(128)])
+    code_verifier = "".join([secrets.choice(VERIFIER_CHARACTERS) for i in range(128)])
     #code_verifier = "pIUgx4tiqFpaOUz0HMc_QbIyQlL901w8mRmkrmhEJ_E" #corresponding challenge should be "_drLS7o5FwkfUiBhlq2hwJnK_SC6yE7sKOde5O1fdzk"
     #print("CV is "+code_verifier)
     cv_hashed = hashlib.sha256(code_verifier.encode("UTF-8")).digest()
@@ -259,9 +260,12 @@ def get_mirrored_MOIDs(username):
     
     mirroreds = []
     
-    first_century = ",".join([str(i) for i in range(1750,2000)])
-    following_years = [str(i) for i in range(2000,date.today().year+1)]
-    year_strings_to_check = [first_century]+following_years
+    YEAR_BATCH_SIZE = 20
+    all_years = list(range(1750, date.today().year+1))
+    year_strings_to_check = []
+    for i in range(0, len(all_years), YEAR_BATCH_SIZE):
+        batch = all_years[i:i+YEAR_BATCH_SIZE]
+        year_strings_to_check.append(",".join(str(y) for y in batch))
     
     for year_string in year_strings_to_check:
     
@@ -374,10 +378,10 @@ def create_obs(obj, jwt):
         else:
             return iNatID
             
-    print("Couldn't post obs. Dumping and quitting.\n")
+    print("Couldn't post obs after 3 attempts. Dumping last response.\n")
     with open("JSON_dump.json", "w", encoding="utf8") as outf:
         outf.write(json.dumps(parsed, indent = 4, sort_keys = False))
-    exit(1)
+    raise MaxRequestAttemptsExceeded("Failed to create observation after 3 attempts. Last response: " + json.dumps(parsed))
         
 def post_fields(iNatID, fields, jwt):
 
@@ -397,9 +401,12 @@ def post_fields(iNatID, fields, jwt):
 def delete_field(iNatID, field_ID, jwt):
 
     obs = view_particular(iNatID)
-    
+
+    if obs is None:
+        return
+
     exact_field_ID = None
-    
+
     if "ofvs" in obs:
     
         for ofv in obs["ofvs"]:
@@ -516,12 +523,19 @@ def add_obs_to_project(obs_ID, project_ID, jwt):
     parsed = careful_request("POST", build_request_URL(base_URL, endpoint), data = obj, headers = build_headers(jwt))
 
 def view_particular(iNatID):
-    
+
     base_URL = "https://api.inaturalist.org/v1"
     endpoint = "/observations/"+iNatID
-    
-    parsed = careful_request("GET", build_request_URL(base_URL, endpoint), headers = build_headers())
-    obs = parsed["results"][0]
-    
-    return obs
+
+    try:
+        parsed = careful_request("GET", build_request_URL(base_URL, endpoint), headers = build_headers())
+    except Exception as e:
+        print("Warning: exception fetching iNat observation " + str(iNatID) + ": " + repr(e))
+        return None
+
+    if not isinstance(parsed, dict) or "results" not in parsed or not isinstance(parsed["results"], list) or len(parsed["results"]) == 0:
+        print("Warning: no results for iNat observation " + str(iNatID) + ".")
+        return None
+
+    return parsed["results"][0]
     

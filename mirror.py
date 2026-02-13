@@ -1686,8 +1686,8 @@ def import_myco_occurrence(occid, args):
         return False
 
     # 10. Complete
-    remove_myco_incomplete(occid)
     update_myco_completes(occid)
+    remove_myco_incomplete(occid)
     print("Done importing occurrence " + str(occid) + " -> iNat " + iNatID + ".")
 
     return True

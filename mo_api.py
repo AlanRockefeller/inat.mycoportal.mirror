@@ -283,12 +283,16 @@ def view_particular(MOID):
 
     base_URL = "https://mushroomobserver.org/api2"
     endpoint = "/observations"
-    params = {"id" : MOID, 
-                    "detail" : "high", 
+    params = {"id" : MOID,
+                    "detail" : "high",
                     "format" : "json"}
-                    
+
     parsed = careful_request("GET", build_request_URL(base_URL, endpoint, params), headers = USER_AGENT)
-    
+
+    if not isinstance(parsed, dict) or "results" not in parsed or not isinstance(parsed["results"], list) or len(parsed["results"]) == 0:
+        print("Warning: no results for MO observation " + str(MOID) + ".")
+        return None
+
     return parsed["results"][0]
     
     #print(json.dumps(parsed, indent = 4, sort_keys = False))
