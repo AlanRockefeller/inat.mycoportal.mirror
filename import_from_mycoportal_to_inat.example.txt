@@ -1,0 +1,52 @@
+alan@Dell-9700 ~/d/mp-mirror (main) [SIGINT]> python3 mirror.py --help                                                                                      (base)
+usage: mirror.py [-h] [--myco [MYCO ...]] [--myco-csv MYCO_CSV] [--max-images MAX_IMAGES] [--image-size {original,medium,thumbnail}] [--dry-run] [--debug]
+                 [--obscure-large-uncertainty]
+
+Mirror observations to iNaturalist
+
+options:
+  -h, --help            show this help message and exit
+  --myco [MYCO ...]     MycoPortal occids or URLs
+  --myco-csv MYCO_CSV   CSV file with occids
+  --max-images MAX_IMAGES
+  --image-size {original,medium,thumbnail}
+  --dry-run
+  --debug
+  --obscure-large-uncertainty
+alan@Dell-9700 ~/d/mp-mirror (main)> python3 mirror.py --myco "https://mycoportal.org/portal/collections/individual/index.php?occid=5649507&clid=0"         (base)
+
+iNaturalist username: alan_rockefeller
+
+We need a JWT from iNat.
+
+Make sure you're not logged in to the wrong iNaturalist account (you probably aren't), and that your browser doesn't have redirects disabled (it probably doesn't). Select the entire following URL and press enter to copy it, then navigate to it in your browser. Log in there if prompted, authorize there and return here.
+
+https://www.inaturalist.org/oauth/authorize?client_id=2C5fNa4asuW8D-1B1Vsf1KRFyNcI1smfhiPvyxvFghA&redirect_uri=http%3A//127.0.0.1%3A65432&response_type=code&code_challenge_method=S256&code_challenge=P3ycyMa3KiYkJ3zsGzUW2Zx2tSgkq3YCwY1mycology
+
+Received connection from browser. Waiting for you to enter the URL above...
+Got authorization code (via your browser) from iNat.
+Got access token.
+Got JWT.
+1 of 1 occids are new.
+
+[1/1]
+
+Importing MycoPortal occurrence 5649507...
+Creating skeleton observation for "Russula".
+Created skeleton observation. iNat ID is 338363972.
+Posting observation fields.
+Downloading images from MycoPortal.
+Got 3 images.
+Uploading images to iNat.
+Uploading image #1.
+Uploading image #2.
+Uploading image #3.
+Done uploading images (3 succeeded, 0 failed).
+Writing observation notes.
+Done importing occurrence 5649507 -> iNat 338363972.
+
+MycoPortal import complete.
+  Successes: 1
+  Failures: 0
+  Skipped (already done): 0
+alan@Dell-9700 ~/d/mp-mirror (main)>    
