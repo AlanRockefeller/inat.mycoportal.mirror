@@ -76,18 +76,24 @@ def get_param_from_socket(field):
             exit(1)
         
         with conn:
-        
+
             print("\nReceived connection from browser. Waiting for you to enter the URL above...")
-            
+
             timer_start = time.time()
             timed_out = False
             while not timed_out:
-            
-                if time.time() >= timer_start + BROWSER_REQUEST_TIMEOUT:
+
+                remaining = BROWSER_REQUEST_TIMEOUT - (time.time() - timer_start)
+                if remaining <= 0:
                     timed_out = True
                     break
-                    
-                data = conn.recv(1024)
+
+                conn.settimeout(remaining)
+                try:
+                    data = conn.recv(1024)
+                except socket.timeout:
+                    timed_out = True
+                    break
                 
                 if not data:
                     timed_out = False
@@ -133,18 +139,17 @@ def get_param_from_socket(field):
                     exit(1)
                         
 def get_JWT_ROPC(username, password):
-            
-            
+
+
     ###### get access token w/ user AND client credentials ######
 
-    iNat_pause()
+    request_pause("iNat", 0)
 
     base_URL = "https://www.inaturalist.org"
     endpoint = "/oauth/token"
-    data_payload = {"client_id" : APP_ID, 
-                            "client_secret" : APP_SECRET, 
-                            "grant_type" : "password", 
-                            "username" : username, 
+    data_payload = {"client_id" : APP_ID,
+                            "grant_type" : "password",
+                            "username" : username,
                             "password" : password}
                             
     parsed = careful_request("POST", build_request_URL(base_URL, endpoint), data = data_payload, headers = build_headers())
@@ -226,25 +231,24 @@ def get_JWT_PKCE():
     try:
         access_token = parsed["access_token"]
     except:
-        print("Did not get access token. Try again.")
-        return get_JWT_PKCE()
+        print("Did not get access token.")
+        return None
     else:
         print("Got access token.")
-        
-            
-            
+
+
     ###### exchange access token for JWT ######
-    
+
     base_URL = "https://www.inaturalist.org"
     endpoint = "/users/api_token"
-    
+
     parsed = careful_request("GET", build_request_URL(base_URL, endpoint), headers = build_headers() | {"Authorization" : "Bearer "+access_token}) # needs "Bearer " - different from what's done in build_headers
-    
+
     try:
         JWT = parsed["api_token"]
     except:
-        print("Did not get JWT. Try again.")
-        return get_JWT_PKCE()
+        print("Did not get JWT.")
+        return None
     else:
         print("Got JWT.")
         return JWT

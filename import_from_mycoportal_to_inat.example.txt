@@ -40,7 +40,7 @@ Got 3 images.
 Uploading images to iNat.
 Uploading image #1.
 Uploading image #2.
-Loading image #3.
+Uploading image #3.
 Done uploading images (3 succeeded, 0 failed).
 Writing observation notes.
 Done importing occurrence 5649507 -> iNat 338363972.

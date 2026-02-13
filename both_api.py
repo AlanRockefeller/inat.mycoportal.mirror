@@ -4,10 +4,14 @@ import time
 import urllib.parse
 from sys import exit
 
+class MaxRequestAttemptsExceeded(Exception):
+    pass
+
 INAT_API_INTERVAL = 1.5
 MO_API_INTERVAL = 5
 MYCO_API_INTERVAL = 1.5
 FIRST_ATTEMPT_PAUSE = 5
+MAX_BACKOFF = 320
 MYCO_FIRST_ATTEMPT_PAUSE = 3
 MYCO_MAX_BACKOFF = 30
 DEFAULT_TIMEOUT = 30
@@ -49,7 +53,7 @@ def request_pause(platform, attempt = 0):
     if platform == "MycoPortal":
         multi_attempt_pause = min(MYCO_FIRST_ATTEMPT_PAUSE*(pow(2, attempt)-1), MYCO_MAX_BACKOFF)
     else:
-        multi_attempt_pause = FIRST_ATTEMPT_PAUSE*(pow(2, attempt)-1)
+        multi_attempt_pause = min(FIRST_ATTEMPT_PAUSE*(pow(2, attempt)-1), MAX_BACKOFF)
     final_pause = max(API_pause, multi_attempt_pause)
     
     if final_pause > 0:
@@ -191,5 +195,4 @@ def careful_request(request_type, url, data = None, files = None, headers = None
         else:
             return content
     
-    print("Maximum request attempts reached. Quitting.\n")
-    exit(0)
+    raise MaxRequestAttemptsExceeded("Maximum request attempts reached. Quitting.")

@@ -1,4 +1,4 @@
-"Slime	496778
+Slime	496778
 Abortiporus	118049
 Abortiporus biennis	118041
 Acarospora	117932

@@ -150,11 +150,11 @@ def get_full_obses(username, page, api_key):
         
     except:
         print("Response did not include observations. Dumping and quitting.\n")
-        with open("JSON_dump.json", "wb") as outf:
-            outf.write(json.dumps(parsed, indent=4, sort_keys=False))
+        with open("JSON_dump.json", "w", encoding="utf8") as outf:
+            json.dump(parsed, outf, indent=4, sort_keys=False)
         exit(1)
-        
-    else:        
+
+    else:
         return full_obses
     
 def get_single_obs(username, MOID, api_key):
@@ -171,14 +171,14 @@ def get_single_obs(username, MOID, api_key):
     
     try:
         full_obs = answer["results"][0]
-        
+
     except:
         print("Response did not include observations. Dumping and quitting.\n")
-        with open("JSON_dump.json", "wb") as outf:
-            outf.write(parsed)
+        with open("JSON_dump.json", "w", encoding="utf8") as outf:
+            json.dump(answer, outf, indent=4, sort_keys=False)
         exit(1)
-        
-    else:        
+
+    else:
         return full_obs
                
 def get_images(urls):
@@ -255,8 +255,9 @@ def read_splist(list_ID):
     
     try:
         MOIDs = list(map(str, parsed["results"]))
-    except:
-        print("Couldn't get obs IDs from species list. Quitting.\n")
+    except Exception as e:
+        print("Couldn't get obs IDs from species list: " + repr(e))
+        return []
     else:
         return MOIDs
         

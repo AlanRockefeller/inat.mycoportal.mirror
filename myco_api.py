@@ -1,6 +1,6 @@
 import json
 import requests
-from both_api import careful_request
+from both_api import careful_request, MaxRequestAttemptsExceeded
 
 MYCO_BASE_URL = "https://mycoportal.org/portal/api/v2"
 USER_AGENT = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0"}
@@ -11,7 +11,7 @@ def get_occurrence(occid, debug=False):
 
     try:
         result = careful_request("GET", url, headers=USER_AGENT)
-    except SystemExit:
+    except MaxRequestAttemptsExceeded:
         print("Warning: max retries reached fetching MycoPortal occurrence " + str(occid) + ". Skipping.")
         return None
     except Exception as e:
@@ -44,7 +44,7 @@ def get_media_fallback(occid):
 
     try:
         result = careful_request("GET", url, headers=USER_AGENT)
-    except SystemExit:
+    except MaxRequestAttemptsExceeded:
         print("Warning: max retries reached fetching media for occurrence " + str(occid) + ".")
         return []
     except Exception as e:
@@ -105,14 +105,13 @@ def download_images(media_list, preferred_size="medium", max_images=None, debug=
 
         if image_bytes is not None:
             successes.append((image_bytes, media, chosen_url))
+            count += 1
             if debug:
                 print("DEBUG download success: " + str(len(image_bytes)) + " bytes")
         else:
             failures.append((media, chosen_url, error))
             if debug:
                 print("DEBUG download failed: " + str(error))
-
-        count += 1
 
     return (successes, failures)
 

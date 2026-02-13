@@ -9,6 +9,7 @@ from datetime import date, datetime
 from sys import exit
 from threading import Timer
 from urllib.parse import urlparse, parse_qs
+from both_api import MaxRequestAttemptsExceeded
 import inat_api
 import mo_api
 import myco_api
@@ -75,11 +76,10 @@ def mirroreds_pause():
 def calculate_radius(north, south, east, west):
 
     earth_circumference = 40042000
-    earth_radius = 6371000
 
     ns_height = (abs(north-south)/360)*earth_circumference
-    upper_ew_width = (abs(east-west)/360)*(math.sin(north)*earth_radius)
-    lower_ew_width = (abs(east-west)/360)*(math.sin(south)*earth_radius)
+    upper_ew_width = (abs(east-west)/360)*math.cos(math.radians(north))*earth_circumference
+    lower_ew_width = (abs(east-west)/360)*math.cos(math.radians(south))*earth_circumference
     
     radius = max(ns_height, upper_ew_width, lower_ew_width)/2
     
@@ -239,6 +239,7 @@ def LOAD_settings():
     global iNat_username
     global iNat_password
     global iNat_JWT
+    global iNat_JWT_timestamp
 
     settings = {}
 
@@ -917,7 +918,7 @@ def get_image_data(MO_obs):
         
     image_captions = [im["notes"] if "notes" in im else "" for im in images]
     image_locations = [im["original_url"] for im in images]
-    image_locations = [re.sub("\\.raw$", "\\.jpg$", loc, flags=re.IGNORECASE) for loc in image_locations] # workaround for .JPG images on MO that somehow were uploaded with .RAW extension
+    image_locations = [re.sub(r"\.raw$", ".jpg", loc, flags=re.IGNORECASE) for loc in image_locations] # workaround for .JPG images on MO that somehow were uploaded with .RAW extension
     image_data = mo_api.get_images(image_locations)
         
     return image_data, image_captions
@@ -1574,7 +1575,7 @@ def import_myco_occurrence(occid, args):
     iNatID = None
     try:
         iNatID = inat_api.create_obs(creation_obj, iNat_JWT)
-    except SystemExit:
+    except MaxRequestAttemptsExceeded:
         # retry once without date — iNat may reject partial/unusual dates
         creation_params = json.loads(creation_obj)
         if "observed_on_string" in creation_params.get("observation", {}):
@@ -1584,7 +1585,7 @@ def import_myco_occurrence(occid, args):
             del creation_params["observation"]["observed_on_string"]
             try:
                 iNatID = inat_api.create_obs(json.dumps(creation_params), iNat_JWT)
-            except SystemExit:
+            except MaxRequestAttemptsExceeded:
                 print("Could not create observation for occid " + str(occid) + ". Skipping.")
                 return False
         else:
@@ -1612,7 +1613,7 @@ def import_myco_occurrence(occid, args):
             update_myco_incomplete(occid, iNatID, "fields_posted")
             if args.debug:
                 print("DEBUG stage: fields_posted")
-        except SystemExit:
+        except MaxRequestAttemptsExceeded:
             print("Warning: failed to post fields for occid " + str(occid) + ". Continuing.")
             update_myco_incomplete(occid, iNatID, "fields_failed")
         except Exception as e:
@@ -1647,7 +1648,7 @@ def import_myco_occurrence(occid, args):
                 try:
                     inat_api.post_image(iNatID, img_bytes, iNat_JWT)
                     uploaded.append((img_bytes, media_dict, chosen_url))
-                except SystemExit:
+                except MaxRequestAttemptsExceeded:
                     print("Warning: failed to upload image #" + str(i + 1) + " (" + str(chosen_url) + "). Continuing.")
                     upload_failures.append((media_dict, chosen_url, "upload to iNat failed (max retries)"))
                 except Exception as e:
@@ -1675,7 +1676,7 @@ def import_myco_occurrence(occid, args):
         update_myco_incomplete(occid, iNatID, "notes_written")
         if args.debug:
             print("DEBUG stage: notes_written")
-    except SystemExit:
+    except MaxRequestAttemptsExceeded:
         print("Warning: failed to write notes for occid " + str(occid) + ". Observation exists but notes are incomplete.")
         update_myco_incomplete(occid, iNatID, "notes_failed")
         return False
@@ -1814,4 +1815,4 @@ if __name__ == "__main__":
         print("Exception: "+repr(e))
         input("\nPress enter to exit.")
         print("Goodbye.\n")
-        exit(0)
+        exit(1)
