@@ -1,4 +1,4 @@
-alan@Dell-9700 ~/d/mp-mirror (main) [SIGINT]> python3 mirror.py --help                                                                                      (base)
+user@example ~/project (main) [SIGINT]> python3 mirror.py --help                                                                                      (base)
 usage: mirror.py [-h] [--myco [MYCO ...]] [--myco-csv MYCO_CSV] [--max-images MAX_IMAGES] [--image-size {original,medium,thumbnail}] [--dry-run] [--debug]
                  [--obscure-large-uncertainty]
 
@@ -13,9 +13,9 @@ options:
   --dry-run
   --debug
   --obscure-large-uncertainty
-alan@Dell-9700 ~/d/mp-mirror (main)> python3 mirror.py --myco "https://mycoportal.org/portal/collections/individual/index.php?occid=5649507&clid=0"         (base)
+user@example ~/project (main)> python3 mirror.py --myco "https://mycoportal.org/portal/collections/individual/index.php?occid=5649507&clid=0"         (base)
 
-iNaturalist username: alan_rockefeller
+iNaturalist username: example_user
 
 We need a JWT from iNat.
 
@@ -49,4 +49,4 @@ MycoPortal import complete.
   Successes: 1
   Failures: 0
   Skipped (already done): 0
-alan@Dell-9700 ~/d/mp-mirror (main)>    
+user@example ~/project (main)>

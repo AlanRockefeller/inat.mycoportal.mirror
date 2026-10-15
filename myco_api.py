@@ -74,6 +74,11 @@ def download_image(url, timeout_seconds=30):
     if len(content) < 5000:
         return (None, "response too small (" + str(len(content)) + " bytes) — likely not an image")
 
+    # iNaturalist documents JPG, PNG, and GIF image uploads.
+    signatures = (b"\xff\xd8\xff", b"\x89PNG\r\n\x1a\n", b"GIF87a", b"GIF89a")
+    if not content.startswith(signatures):
+        return (None, "response is not a supported JPG, PNG, or GIF image")
+
     return (content, None)
 
 def download_images(media_list, preferred_size="medium", max_images=None, debug=False):
@@ -121,20 +126,14 @@ def download_images(media_list, preferred_size="medium", max_images=None, debug=
 def pick_media_url(media, preferred_size):
 
     size_keys = {
-        "original": ["originalUrl", "mediumUrl", "thumbnailUrl"],
-        "medium": ["mediumUrl", "originalUrl", "thumbnailUrl"],
-        "thumbnail": ["thumbnailUrl", "mediumUrl", "originalUrl"],
+        "original": ["originalUrl", "url", "mediumUrl", "thumbnailUrl", "accessUri"],
+        "medium": ["url", "mediumUrl", "thumbnailUrl", "originalUrl", "accessUri"],
+        "thumbnail": ["thumbnailUrl", "url", "mediumUrl", "originalUrl", "accessUri"],
     }
 
     keys = size_keys.get(preferred_size, size_keys["medium"])
 
     for key in keys:
-        val = media.get(key)
-        if val:
-            return val
-
-    # last resort: check generic keys
-    for key in ("url", "accessUri"):
         val = media.get(key)
         if val:
             return val

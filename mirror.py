@@ -9,7 +9,7 @@ import time
 from datetime import date, datetime
 from sys import exit
 from urllib.parse import urlparse, parse_qs
-from both_api import MaxRequestAttemptsExceeded, RequestRejected
+from both_api import MaxRequestAttemptsExceeded, RequestRejected, AmbiguousRequestError
 import inat_api
 import mo_api
 import myco_api
@@ -20,6 +20,9 @@ LOG_FILENAME = "log.txt"
 SETTINGS_FILENAME = "PRIVATE settings.txt"
 COMPLETES_FILENAME = "completes.txt"
 INCOMPLETES_FILENAME = "incompletes.txt"
+MO_PENDING_FILENAME = "mo_pending.tsv"
+MO_PENDING_HEADER = "MOID\tiNatID\tstage"
+MO_SOURCE_MARKER = "Mushroom Observer MOID: "
 BACKUP_FOLDER = "backup"
 MONTHS = {"01":"Jan.", "02":"Feb.", "03":"Mar.", "04":"Apr.", "05":"May", "06":"Jun.", "07":"Jul.", "08":"Aug.", "09":"Sep.", "10":"Oct.", "11":"Nov.", "12":"Dec."}
 CONFIDENCES = {3:"I'd Call It That", 2:"Promising", 1:"Could Be", 0:"No Opinion", -1:"Doubtful", -2:"Not Likely", -3:"As If!"}
@@ -531,6 +534,8 @@ def update_completes(MOIDs, appending):
                 outf.write("\n".join(MOIDs))
             else:
                 outf.write("\n"+"\n".join(MOIDs))
+            outf.flush()
+            os.fsync(outf.fileno())
     
     else:
     
@@ -546,6 +551,8 @@ def update_incompletes(iNatID, adding):
         file_empty = True
 
     if adding:
+        if iNatID in LOAD_incompletes():
+            return
         with open(INCOMPLETES_FILENAME, "a", encoding="utf8") as outf:
             if file_empty:
                 outf.write(iNatID)
@@ -560,9 +567,86 @@ def update_incompletes(iNatID, adding):
         with open(INCOMPLETES_FILENAME, "w", encoding="utf8") as outf:
             outf.write("\n".join(new_iNatIDs))
             
+def load_mo_pending():
+    """Read MO creation and back-link recovery records, preserving empty IDs."""
+
+    if not os.path.isfile(MO_PENDING_FILENAME):
+        return []
+    with open(MO_PENDING_FILENAME, encoding="utf8", newline="") as infile:
+        reader = csv.DictReader(infile, delimiter="\t")
+        if reader.fieldnames != MO_PENDING_HEADER.split("\t"):
+            raise ValueError("Invalid MO recovery file header.")
+        rows = list(reader)
+    if any(not row.get("MOID") or not row.get("stage") or row.get("iNatID") is None for row in rows):
+        raise ValueError("Invalid MO recovery record.")
+    return rows
+
+def update_mo_pending(MOID, iNatID, stage):
+    """Persist a recovery record before performing its corresponding write."""
+
+    rows = [row for row in load_mo_pending() if row["MOID"] != MOID]
+    rows.append({"MOID": MOID, "iNatID": iNatID, "stage": stage})
+    _write_tracking_file(MO_PENDING_FILENAME, MO_PENDING_HEADER, rows, ("MOID", "iNatID", "stage"))
+
+def remove_mo_pending(MOID):
+
+    rows = [row for row in load_mo_pending() if row["MOID"] != MOID]
+    _write_tracking_file(MO_PENDING_FILENAME, MO_PENDING_HEADER, rows, ("MOID", "iNatID", "stage"))
+
+def find_mo_creation(MOID):
+    """Reconcile an uncertain creation and persist a recovered ID immediately."""
+
+    try:
+        iNatID = inat_api.find_obs_by_description(iNat_username, MO_SOURCE_MARKER + MOID)
+    except Exception as e:
+        print("Could not check iNaturalist for MO observation " + MOID + ": " + str(e))
+        return None
+    if iNatID is not None:
+        iNatID = str(iNatID)
+        update_mo_pending(MOID, iNatID, "skeleton_created")
+    return iNatID
+
+def finish_mo_link(MOID, iNatID):
+    """Complete only a confirmed back-link, keeping all recovery state on error."""
+
+    mo_api.add_link(MO_username, MOID, iNatID, current_date(), MO_API_key)
+    update_settings({"last mirrored": str(time.time())})
+    update_completes([MOID], True)
+    update_incompletes(iNatID, False)
+    remove_mo_pending(MOID)
+
+def reconcile_mo_pending():
+    """Recover creation IDs and retry back-links without deleting full mirrors."""
+
+    completes = set(LOAD_mirroreds())
+    for row in load_mo_pending():
+        MOID, iNatID = row["MOID"], row["iNatID"]
+        if MOID in completes:
+            if iNatID:
+                update_incompletes(iNatID, False)
+            remove_mo_pending(MOID)
+        elif row["stage"] == "link_pending":
+            if not iNatID:
+                raise ValueError("MO back-link recovery record has no iNaturalist ID.")
+            try:
+                finish_mo_link(MOID, iNatID)
+            except Exception as e:
+                print("MO back-link is still pending for " + MOID + ": " + str(e))
+        else:
+            if not iNatID:
+                iNatID = find_mo_creation(MOID)
+            if iNatID:
+                update_incompletes(iNatID, True)
+            else:
+                print("Creation outcome is unknown for MO observation " + MOID +
+                      ". Check iNaturalist before reconciling its row in " + MO_PENDING_FILENAME + ".")
+
 def deal_with_incompletes():
 
-    incompletes = LOAD_incompletes()
+    reconcile_mo_pending()
+    pending = load_mo_pending()
+    protected = {row["iNatID"] for row in pending if row["stage"] == "link_pending"}
+    incompletes = [iNatID for iNatID in LOAD_incompletes() if iNatID not in protected]
     
     if len(incompletes) > 0:
     
@@ -582,6 +666,9 @@ def deal_with_incompletes():
                 for incomplete in incompletes:
                     inat_api.delete_observation(incomplete, iNat_JWT)
                     update_incompletes(incomplete, False)
+                    for row in pending:
+                        if row["iNatID"] == incomplete:
+                            remove_mo_pending(row["MOID"])
                 print("Finished deleting.")
 
 def get_already_mirrored_MOIDs():
@@ -605,6 +692,8 @@ def get_already_mirrored_MOIDs():
         mirroreds_pause()
         print("\nGetting IDs of your MO observations already mirrored on iNat. This will take some time.")
         already_mirrored_MOIDs = inat_api.get_mirrored_MOIDs(iNat_username)
+        pending_MOIDs = {row["MOID"] for row in load_mo_pending()}
+        already_mirrored_MOIDs = set(already_mirrored_MOIDs).difference(pending_MOIDs)
         print("Got "+str(len(already_mirrored_MOIDs))+" IDs.")
         update_completes(already_mirrored_MOIDs, False)
         
@@ -796,7 +885,7 @@ def build_creation_obj(MO_obs):
     params["taxon_id"] = determine_taxon_ID(MO_obs, MO_name)
     params["observed_on_string"] = MO_obs["date"]
     params["place_guess"] = MO_obs["location"]["name"]
-    params["description"] = "This observation is incompletely mirrored from Mushroom Observer. Refresh soon to see the full observation."
+    params["description"] = MO_SOURCE_MARKER + MOID + "\nThis observation is incompletely mirrored from Mushroom Observer. Refresh soon to see the full observation."
     
     if ("latitude" in MO_obs and "longitude" in MO_obs) \
     and (MO_obs["latitude"] and MO_obs["longitude"]):
@@ -996,7 +1085,7 @@ def build_note_obj(MO_obs, image_captions, unfielded_specimens, unfielded_sequen
     
     full_notes = "\n\n&#8212;\n\n".join([n for n in (note_from_MO, note_image_captions, note_unfielded_specimens, note_fielded_sequences, note_unfielded_sequences, note_originally_posted) if len(n) > 0])
     
-    params = {"description" : full_notes}
+    params = {"description" : MO_SOURCE_MARKER + str(MO_obs["id"]) + "\n\n" + full_notes}
     obj = json.dumps({"observation" : params, "ignore_photos" : "1"}) # ignore_photos is CRUCIAL
     
     return obj
@@ -1023,10 +1112,8 @@ def mirror_wrapper(num_to_mirror, already_mirrored_MOIDs, MO_page_to_start, MOID
         ####
         
         if len(available_MO_obses) == 0:
-            print("\nNo more obses left from MO. Hopefully your mirroring is complete.")
-            input("Press enter to exit.")
-            print("Goodbye.\n")
-            exit(0)
+            print("\nNo more observations left from MO in this batch.")
+            return mirrored_MOIDs
         if keep_backup:
             backup_results(available_MO_obses)
             
@@ -1039,7 +1126,8 @@ def mirror_wrapper(num_to_mirror, already_mirrored_MOIDs, MO_page_to_start, MOID
             
             MOID = str(MO_obs["id"])
             
-            if MOID in already_mirrored_MOIDs:
+            pending_MOIDs = {row["MOID"] for row in load_mo_pending()}
+            if MOID in already_mirrored_MOIDs or MOID in mirrored_MOIDs or MOID in pending_MOIDs:
                 #print(MOID+" already mirrored, skipping")
                 moobs_index += 1
                 continue
@@ -1059,7 +1147,20 @@ def mirror_wrapper(num_to_mirror, already_mirrored_MOIDs, MO_page_to_start, MOID
             elif action == "SKIP":
                 moobs_index += 1
                 continue
-            iNatID = inat_api.create_obs(creation_obj, iNat_JWT)
+            update_mo_pending(MOID, "", "creation_pending")
+            try:
+                iNatID = inat_api.create_obs(creation_obj, iNat_JWT)
+            except RequestRejected:
+                remove_mo_pending(MOID)
+                raise
+            except AmbiguousRequestError:
+                update_mo_pending(MOID, "", "creation_unknown")
+                iNatID = find_mo_creation(MOID)
+                if iNatID is None:
+                    print("Not retrying creation for MO observation " + MOID + "; recovery tracking retained.")
+                    moobs_index += 1
+                    continue
+            update_mo_pending(MOID, iNatID, "skeleton_created")
             update_incompletes(iNatID, True)
             print("Successfully created skeleton observation. iNat ID is "+iNatID+".")
             
@@ -1097,12 +1198,14 @@ def mirror_wrapper(num_to_mirror, already_mirrored_MOIDs, MO_page_to_start, MOID
             
             ### UPDATE MO ###
             print("Linking to new iNat observation from original MO observation.")
-            mo_api.add_link(MO_username, MOID, iNatID, current_date(), MO_API_key)
-            
-            # record locally #
-            update_settings({"last mirrored" : str(time.time())})
-            update_completes([MOID], True)
+            update_mo_pending(MOID, iNatID, "link_pending")
             update_incompletes(iNatID, False)
+            try:
+                finish_mo_link(MOID, iNatID)
+            except Exception as e:
+                print("iNaturalist observation " + iNatID + " is populated; MO back-link remains pending: " + str(e))
+                moobs_index += 1
+                continue
             
             mirrored_MOIDs.add(MOID)
             print("Done mirroring observation "+str(len(mirrored_MOIDs))+" of "+str(num_to_mirror)+".")
@@ -1277,26 +1380,30 @@ def load_myco_incompletes():
 
     return rows
 
-def _write_myco_incompletes(rows):
+def _write_tracking_file(filename, header, rows, fields):
     """Replace tracking atomically so interruption preserves the previous file."""
 
-    directory = os.path.dirname(os.path.abspath(MYCO_INCOMPLETES_FILENAME))
+    directory = os.path.dirname(os.path.abspath(filename))
     with tempfile.NamedTemporaryFile(mode="w", encoding="utf8", dir=directory,
-                                     prefix=".myco_incompletes-", delete=False) as outfile:
+                                     prefix=".mirror-state-", delete=False) as outfile:
         temporary_name = outfile.name
         try:
-            outfile.write(MYCO_INCOMPLETES_HEADER + "\n")
-            outfile.write("\n".join(row["occid"] + "\t" + row["iNatID"] + "\t" + row["stage"] for row in rows))
+            outfile.write(header + "\n")
+            outfile.write("\n".join("\t".join(row[field] for field in fields) for row in rows))
             outfile.flush()
             os.fsync(outfile.fileno())
         except BaseException:
             os.unlink(temporary_name)
             raise
     try:
-        os.replace(temporary_name, MYCO_INCOMPLETES_FILENAME)
+        os.replace(temporary_name, filename)
     finally:
         if os.path.exists(temporary_name):
             os.unlink(temporary_name)
+
+def _write_myco_incompletes(rows):
+
+    _write_tracking_file(MYCO_INCOMPLETES_FILENAME, MYCO_INCOMPLETES_HEADER, rows, ("occid", "iNatID", "stage"))
 
 def update_myco_incomplete(occid, iNatID, stage):
 
@@ -1543,7 +1650,7 @@ def build_myco_notes(occurrence, occid, verbatim_date_note, media_successes, med
             attr_parts = []
             if chosen_url:
                 attr_parts.append("source: " + chosen_url)
-            for attr_key in ("owner", "rights", "copyright", "creator", "accessRights"):
+            for attr_key in ("owner", "rights", "copyright", "photographer", "creator", "accessRights"):
                 val = resolve_myco_field(media_dict, attr_key)
                 if val:
                     attr_parts.append(attr_key + ": " + val)
@@ -1841,12 +1948,16 @@ def main():
         while True:
 
             ###
-            mirrorable_MOIDs = set(MOIDs).difference(already_mirrored_MOIDs)
+            pending_MOIDs = {row["MOID"] for row in load_mo_pending()}
+            mirrorable_MOIDs = set(MOIDs).difference(already_mirrored_MOIDs, pending_MOIDs)
             ###
             copula = "is" if len(mirrorable_MOIDs) == 1 else "are"
             print("\n"+str(len(mirrorable_MOIDs))+" of your observations "+copula+" mirrorable (not yet on iNat).")
             if len(mirrorable_MOIDs) == 0:
                 print("\nNo observations to mirror.")
+                if pending_MOIDs:
+                    print("MO observations still await recovery in " + MO_PENDING_FILENAME + ".")
+                    return 1
                 input("Press enter to exit.")
                 print("Goodbye.\n")
                 exit(0)

@@ -9,7 +9,7 @@ import time
 from urllib.parse import parse_qs
 from datetime import date
 from sys import exit
-from both_api import build_request_URL, request_pause, careful_request, AmbiguousRequestError
+from both_api import build_request_URL, request_pause, careful_request, AmbiguousRequestError, RequestRejected
 
 
 USER_AGENT = {"User-Agent" : "Mushroom Observer/iNaturalist Mirror"}
@@ -501,7 +501,12 @@ def delete_observation(iNatID, jwt):
     base_URL = "https://api.inaturalist.org/v1"
     endpoint = "/observations/"+iNatID
     
-    parsed = careful_request("DELETE", build_request_URL(base_URL, endpoint), headers = build_headers(jwt))
+    try:
+        careful_request("DELETE", build_request_URL(base_URL, endpoint), headers = build_headers(jwt))
+    except RequestRejected as e:
+        if e.status_code != 404:
+            raise
+        # A previous deletion may have succeeded even if its response was lost.
 
 def name_ID_exists(nameID):
     

@@ -216,12 +216,13 @@ def add_link(username, MOID, iNatID, current_date, MO_API_key):
     
     try:
         obs = parsed["results"][0]
-    except:
-        print("Didn't get observation data from MO. Quitting.\n")
-        exit(1)
-    else:
-        original_notes = obs["notes"] if "notes" in obs else ""
-        original_notes = clean_up_notes(original_notes)
+        original_notes = clean_up_notes(obs.get("notes") or "")
+    except (KeyError, IndexError, TypeError, AttributeError) as e:
+        raise RuntimeError("Could not read MO notes before adding the iNaturalist link.") from e
+
+    link_pattern = r"https?://(?:www\.)?inaturalist\.org/observations/" + re.escape(str(iNatID)) + r"(?=[/?#\s\"'<>]|$)"
+    if re.search(link_pattern, original_notes):
+        return
 
 
     ### construct new notes ###
@@ -243,11 +244,10 @@ def add_link(username, MOID, iNatID, current_date, MO_API_key):
                    "log" : "no",
                    "format" : "json"}
 
-    parsed = careful_request("PATCH", build_request_URL(base_URL, endpoint), data = patch_data, headers = USER_AGENT)
+    parsed = careful_request("PATCH", build_request_URL(base_URL, endpoint), data = patch_data, headers = USER_AGENT, retry_safe=False)
     
-    if bad_API_key(parsed):
-        print("MO API key failed. Quitting.\n")
-        exit(1)
+    if not isinstance(parsed, dict) or parsed.get("errors"):
+        raise RuntimeError("MO did not confirm the iNaturalist back-link update.")
         
 def read_splist(list_ID):
 

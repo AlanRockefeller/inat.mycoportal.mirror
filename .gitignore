@@ -6,8 +6,10 @@ backup/
 log.txt
 completes.txt
 incompletes.txt
+mo_pending.tsv
 myco_completes.txt
 myco_incompletes.tsv
 .myco_incompletes-*
+.mirror-state-*
 JSON_dump.json
 non_JSON_dump.html

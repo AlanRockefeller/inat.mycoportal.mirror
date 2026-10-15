@@ -43,6 +43,7 @@ class IsolatedTest(unittest.TestCase):
         for key, filename in {
             "SETTINGS_FILENAME": "settings.txt", "LOG_FILENAME": "log.txt",
             "COMPLETES_FILENAME": "completes.txt", "INCOMPLETES_FILENAME": "incompletes.txt",
+            "MO_PENDING_FILENAME": "mo_pending.tsv",
             "MYCO_COMPLETES_FILENAME": "myco_completes.txt",
             "MYCO_INCOMPLETES_FILENAME": "myco_incompletes.tsv",
         }.items():
@@ -418,9 +419,10 @@ class MappingTests(IsolatedTest):
         self.assertEqual(download.call_count, 2)
 
     def test_image_download_uses_shared_retry_layer(self):
-        with patch.object(both_api.sess, "get", side_effect=[requests.ReadTimeout(), response(content=b"x" * 6000)]) as get:
+        image_bytes = b"\xff\xd8\xff" + b"x" * 5997
+        with patch.object(both_api.sess, "get", side_effect=[requests.ReadTimeout(), response(content=image_bytes)]) as get:
             image, error = myco_api.download_image("https://example.org/photo.jpg", timeout_seconds=10)
-        self.assertEqual(image, b"x" * 6000)
+        self.assertEqual(image, image_bytes)
         self.assertIsNone(error)
         self.assertEqual(get.call_count, 2)
         self.assertEqual(get.call_args.kwargs["timeout"], 10)

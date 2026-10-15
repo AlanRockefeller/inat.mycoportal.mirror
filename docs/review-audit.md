@@ -55,3 +55,19 @@ Review summaries also contained repeated cleanup suggestions. The replacement us
 Run `python3 -m unittest discover -s tests -v`. The suite blocks real HTTP requests and isolates local tracking files. Compilation, CLI help, and whitespace checks also pass locally on Python 3.14. Python 3.9 execution is delegated to CI.
 
 No live observations were created, updated, or deleted during validation. A newly opened PR should receive a fresh CodeRabbit review before merging. One importer process per working directory is supported; the tracking files are not a concurrent job queue. Unknown creation outcomes require checking iNaturalist before clearing tracking, because a missing search result is not proof that a POST failed.
+
+## PR #2 follow-up
+
+All seven actionable threads on commit `0bb609b` have fixes and regression coverage:
+
+| Review concern | Fix and verification |
+| --- | --- |
+| [Symbiota medium image preference](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278894310) | Prefer web-ready `url` for medium images and thumbnail fallback, while preserving explicit original and thumbnail preferences. |
+| [Photographer attribution](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278894314) | Copy `photographer` alongside the other attribution fields. |
+| [Already-deleted cleanup](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278894319) | Treat DELETE 404 as absence, including after a lost response; authorization errors still retain tracking. |
+| [Example transcript privacy](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278898293) | Replace local account, host, path, and iNaturalist login with example values. |
+| [Ambiguous MO creation](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278898299) | Save pending/unknown MOID state before posting, preserve a source marker, persist recovered IDs before recovery, and exclude pending MOIDs from reruns and completion discovery. |
+| [MO back-link failure](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278898309) | Persist `link_pending` separately from deletion-prone incomplete IDs; protect populated mirrors, check for the exact existing link before PATCH, and retry only the back-link during recovery. |
+| [Non-image downloads](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278898316) | Reject HTML and unsupported formats before upload; accept the documented JPG, PNG, and GIF signatures. |
+
+Fault-injection tests cover interrupted creation, failed searches, repeated runs, rejected and uncertain back-links, stale completion/pending records, and lost DELETE responses. Tests also verify that back-link recovery does not repeat iNaturalist creation, field, photo, or note writes. The expanded suite has 77 tests, with real HTTP requests blocked.

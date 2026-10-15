@@ -23,11 +23,19 @@ python3 mirror.py --myco-csv occurrences.csv --image-size original --max-images 
 
 The import prompts for your iNaturalist username and browser authorization. MycoPortal mode does not need a Mushroom Observer account. `--dry-run` fetches and displays source metadata without authenticating to iNaturalist, downloading photos, or writing tracking files. `--debug` displays detailed source data. `--obscure-large-uncertainty` obscures locations with uncertainty over 100 km; records with `recordSecurity` greater than zero are obscured automatically. `--max-images` limits successful image downloads (zero skips photos).
 
+The default medium image size prefers Symbiota's web-ready `url`, and photo attribution includes its `photographer` field. See the [Symbiota media fields](https://docs.symbiota.org/es/3.3/Collection_Manager_Guide/Images/media_upload_url/). Downloads are checked for signatures of JPG, PNG, or GIF, the [image formats documented by iNaturalist](https://help.inaturalist.org/en/support/solutions/articles/151000169928-what-kind-of-photos-or-sounds-should-i-attach-to-observations-), before upload.
+
 Completed occurrence IDs are recorded in `myco_completes.txt`. Failed or interrupted imports remain in `myco_incompletes.tsv` and are skipped on reruns. Field, photo, and note failures keep the import incomplete and produce a nonzero exit status. On the next non-dry run, you can delete tracked partial observations and reimport them.
 
 If creation times out, the program searches for the occurrence marker before proceeding. A missing search result cannot prove that creation failed, so it retains a row with an empty `iNatID` and does not repeat creation. Check your iNaturalist observations before manually reconciling that row: enter the existing observation ID to make it available for the normal incomplete-import cleanup, or remove the row only after confirming that no observation was created. Keep the tracking files between runs and run one importer at a time from a given folder.
 
 Settings, tokens, backups, and runtime tracking files are excluded from Git. They are stored in the current working directory.
+
+## Mushroom Observer recovery
+
+MO imports record creation attempts in `mo_pending.tsv` before contacting iNaturalist. If the response is lost, the importer searches for the MOID marker in the observation description and saves any recovered iNaturalist ID. Pending or unknown MOIDs are excluded from new imports, including after a restart. If search has not found the observation, check iNaturalist before editing the recovery row: set its `iNatID` and `skeleton_created` stage to make the partial observation available for normal cleanup, or remove the row only after confirming that no observation was created.
+
+Once the iNaturalist fields, photos, and notes are written, the record enters `link_pending`. The populated observation is protected from incomplete-observation deletion while its MO back-link is unfinished. On the next run, the importer checks MO notes for the exact iNaturalist observation URL before trying to add it again; an existing link counts as success. Completion is recorded only after that step succeeds. Cleanup of a partial observation also accepts HTTP 404, since an earlier deletion may already have removed it.
 
 ## Tests
 
