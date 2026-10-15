@@ -7,6 +7,17 @@ from sys import exit
 class MaxRequestAttemptsExceeded(Exception):
     pass
 
+class RequestRejected(MaxRequestAttemptsExceeded):
+    """The server explicitly rejected a request without applying it."""
+
+    def __init__(self, status_code, content=None):
+        self.status_code = status_code
+        self.content = content
+        super().__init__("Request rejected (HTTP " + str(status_code) + ").")
+
+class AmbiguousRequestError(MaxRequestAttemptsExceeded):
+    """A write may have succeeded; repeating it could create duplicates."""
+
 INAT_API_INTERVAL = 1.5
 MO_API_INTERVAL = 5
 MYCO_API_INTERVAL = 1.5
@@ -22,9 +33,9 @@ last_iNat_request = 0
 last_MO_request = 0
 last_MycoPortal_request = 0
 
-def build_request_URL(base_URL, endpoint, params = {}):
+def build_request_URL(base_URL, endpoint, params = None):
 
-    param_string = "" if len(params) == 0 else "?"+"&".join([key+"="+urllib.parse.quote(str(params[key])) for key in params])
+    param_string = "?" + urllib.parse.urlencode(params) if params else ""
     
     request_URL = base_URL+endpoint+param_string
     
@@ -72,47 +83,28 @@ def request_pause(platform, attempt = 0):
         print("Unknown platform "+str(platform)+". Quitting.\n")
         exit(1)
     
-def confirm_json(response):
+def careful_request(request_type, url, data = None, files = None, headers = None,
+                    demand_json = True, retry_safe = None, timeout = DEFAULT_TIMEOUT):
+    """Retry reads and idempotent writes; never blindly repeat a POST."""
 
-    if str(response.status_code) != "200":
-    
-        # print("Did not receive status code 200. Dumping and quitting.\n")
-        # with open("json_dump.json", "wb") as outf:
-            # outf.write(response.content)
-        # exit(1)
-    
-        return None # receiving 401 from iNat isn't an exitable offense, just means auth failed
+    request_type = request_type.upper()
+    if request_type not in ("GET", "POST", "PUT", "PATCH", "DELETE"):
+        raise ValueError("Unsupported request type: " + request_type)
+    if retry_safe is None:
+        retry_safe = request_type != "POST"
 
-    try:
-    
-        parsed = json.loads(response.content)
-        
-    except:
-    
-        if "iNaturalist API is down" in str(response.content[:500]):
-            print("iNat API down. Trying again.")
-            return None
-        
-        else:
-            print("Got unexpected non-json response. Dumping and quitting.\n")
-            with open("non_json_dump.html", "wb") as outf:
-                outf.write(response.content)
-            exit(1)
-            
-    else:
-            
-        return parsed
-        
-def careful_request(request_type, url, data = None, files = None, headers = None, demand_json = True):
-
-    if url.startswith("https://api.inaturalist.org"):
+    hostname = urllib.parse.urlparse(url).hostname
+    if hostname in ("api.inaturalist.org", "www.inaturalist.org", "inaturalist.org"):
         platform = "iNat"
-    elif url.startswith("https://mushroomobserver.org"):
+    elif hostname in ("mushroomobserver.org", "www.mushroomobserver.org"):
         platform = "MO"
-    elif url.startswith("https://mycoportal.org/portal/api/"):
+    elif hostname in ("mycoportal.org", "www.mycoportal.org"):
         platform = "MycoPortal"
     else:
         platform = None
+
+    if platform == "iNat" and isinstance(data, str) and files is None:
+        headers = {"Content-Type": "application/json"} | (headers or {})
         
     attempt = 0
     while attempt < MAX_ATTEMPTS:
@@ -122,49 +114,33 @@ def careful_request(request_type, url, data = None, files = None, headers = None
         
         try:
             
-            if request_type == "GET":
-                response = sess.get(url, data = data, files = files, headers = headers, timeout = DEFAULT_TIMEOUT)
-            elif request_type == "POST":
-                response = sess.post(url, data = data, files = files, headers = headers, timeout = DEFAULT_TIMEOUT)
-            elif request_type == "PUT":
-                response = sess.put(url, data = data, files = files, headers = headers, timeout = DEFAULT_TIMEOUT)
-            elif request_type == "PATCH":
-                response = sess.patch(url, data = data, files = files, headers = headers, timeout = DEFAULT_TIMEOUT)
-            elif request_type == "DELETE":
-                response = sess.delete(url, data = data, files = files, headers = headers, timeout = DEFAULT_TIMEOUT)
-                
-            status_code = str(response.status_code)
-            
-            if status_code != "200":
-            
-                # unauthorized - don't retry, this is useful information to return (indicated by None)
-                if status_code == "401":
+            response = getattr(sess, request_type.lower())(
+                url, data=data, files=files, headers=headers, timeout=timeout)
+            status_code = response.status_code
+
+            if not 200 <= status_code < 300:
+                # Authentication probes use None; writes must report failure.
+                if status_code == 401 and request_type == "GET":
                     return None
-                    
-                elif status_code == "400" and platform == "iNat":
-                    print("Got status code 400. This may be a brief hiccup from iNat. Trying again.")
-                    # print("Request type: "+request_type)
-                    # print("URL: "+url)
-                    # print("Data: "+str(data))
-                    # print("Headers: "+str(headers))
-                    # print("Quitting.\n")
-                    
-                elif platform:
-                    # print("url: "+url)
-                    # print("data: "+str(data))
-                    print(str(response.content))
-                    print("Got status code "+status_code+" from "+platform+". Trying again.")
-                else:
-                    print("Got status code "+status_code+". Trying again.")
+                if 400 <= status_code < 500 and status_code not in (408, 429):
+                    raise RequestRejected(status_code, response.content.decode("utf8", errors="replace"))
+                if not retry_safe and status_code != 429:
+                    raise AmbiguousRequestError("HTTP " + str(status_code) +
+                                                ": write outcome is unknown; not retrying.")
+                print("Got status code " + str(status_code) + ". Trying again.")
                 continue
                 
             # reach the content
-            if demand_json:
+            if demand_json and response.content:
                 content = json.loads(response.content)
+            elif demand_json:
+                content = {}
             else:
                 content = response.content
             
-        except (requests.exceptions.ConnectionError, ConnectionResetError):
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout, ConnectionResetError) as e:
+            if not retry_safe:
+                raise AmbiguousRequestError("Write outcome is unknown; not retrying.") from e
             if platform:
                 print("Connection error trying to reach "+platform+". Trying again.")
             else:
@@ -172,6 +148,8 @@ def careful_request(request_type, url, data = None, files = None, headers = None
             continue
             
         except json.decoder.JSONDecodeError:
+            if not retry_safe:
+                raise AmbiguousRequestError("Write returned invalid JSON; not retrying.")
             if "iNaturalist API is down" in str(response.content)[:500]:
                 print("iNaturalist API is down. Trying again.")
                 continue
@@ -184,13 +162,6 @@ def careful_request(request_type, url, data = None, files = None, headers = None
                     outf.write(response.content)
                 continue
                 
-        except requests.exceptions.ReadTimeout:
-            if platform:
-                print("Read timed out trying to reach "+platform+". Trying again.")
-            else:
-                print("Read timed out. Trying again.")
-            continue
-        
         # no exceptions or other problems. return the content
         else:
             return content

@@ -1,15 +1,15 @@
 import base64
 import hashlib
 import json
-import random
 import re
 import secrets
 import socket
 from string import ascii_uppercase, ascii_lowercase, digits
 import time
+from urllib.parse import parse_qs
 from datetime import date
 from sys import exit
-from both_api import build_request_URL, request_pause, careful_request, MaxRequestAttemptsExceeded
+from both_api import build_request_URL, request_pause, careful_request, AmbiguousRequestError
 
 
 USER_AGENT = {"User-Agent" : "Mushroom Observer/iNaturalist Mirror"}
@@ -62,7 +62,7 @@ def confirm_JWT(jwt, username, timestamp = 0):
     else:
         return response_username.lower() == username.lower()
 
-def get_param_from_socket(field):
+def get_param_from_socket(field, expected_state=None):
 
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -114,7 +114,7 @@ def get_param_from_socket(field):
                     param_part = splat[1]
                     
                     try:
-                        param_pairs = [p.split("=") for p in param_part.split("&")]
+                        param_dictionary = parse_qs(param_part)
                     except:
                         print(f"Couldn't interpret parameters in URL in the following line: \"{request_line}\". Quitting.\n")
                         conn.send(("HTTP/1.1 200 OK\n"+"Content-Type: text/html\n\n"+USER_AGENT["User-Agent"]+" couldn't get the authorization code. :(").encode("ascii"))
@@ -122,12 +122,14 @@ def get_param_from_socket(field):
                         
                     else:
                     
-                        param_dictionary = dict(param_pairs)
+                        if expected_state is not None and param_dictionary.get("state") != [expected_state]:
+                            conn.sendall(b"HTTP/1.1 400 Bad Request\r\nConnection: close\r\n\r\nInvalid OAuth state.")
+                            raise RuntimeError("OAuth callback state did not match this login attempt.")
                         
                         if field in param_dictionary:
                             print("Got authorization code (via your browser) from iNat.")                            
                             conn.send(("HTTP/1.1 200 OK\n"+"Content-Type: text/html\n\n"+USER_AGENT["User-Agent"]+" got the authorization code. Thank you!").encode("ascii"))
-                            return param_dictionary[field]
+                            return param_dictionary[field][0]
                             
                         else:
                             print("Couldn't find code in params. Quitting.\n")
@@ -201,9 +203,11 @@ def get_JWT_PKCE():
 
     base_URL = "https://www.inaturalist.org"
     endpoint = "/oauth/authorize"
-    params = {"client_id" : APP_ID, 
+    oauth_state = secrets.token_urlsafe(32)
+    params = {"client_id" : APP_ID,
                     "redirect_uri" : REDIRECT_URI, 
                     "response_type" : "code", 
+                    "state" : oauth_state,
                     "code_challenge_method" : "S256",
                     "code_challenge" : code_challenge}
                     
@@ -213,7 +217,9 @@ def get_JWT_PKCE():
     print("\nMake sure you're not logged in to the wrong iNaturalist account (you probably aren't), and that your browser doesn't have redirects disabled (it probably doesn't). Select the entire following URL and press enter to copy it, then navigate to it in your browser. Log in there if prompted, authorize there and return here.\n")
     print(full_URL)
     
-    code = get_param_from_socket("code")
+    code = get_param_from_socket("code", expected_state=oauth_state)
+    if not code:
+        return None
     
     
     
@@ -227,7 +233,7 @@ def get_JWT_PKCE():
                     "grant_type" : "authorization_code", 
                     "code_verifier" : code_verifier}
                     
-    parsed = careful_request("POST", build_request_URL(base_URL, endpoint, params))
+    parsed = careful_request("POST", build_request_URL(base_URL, endpoint), data=params)
     
     try:
         access_token = parsed["access_token"]
@@ -358,30 +364,13 @@ def search_for_name(name):
     return search_results
  
 def create_obs(obj, jwt):
+    """Create once; a missing ID is an uncertain outcome, not permission to retry."""
 
-
-    # try 3 times to post & get obs ID back
-    for i in range(3):
-    
-        base_URL = "https://api.inaturalist.org/v1"
-        endpoint = "/observations"
-        
-        parsed = careful_request("POST", build_request_URL(base_URL, endpoint), data = obj, headers = build_headers(jwt))
-            
-        try:
-            iNatID = str(parsed["id"])
-            
-        except:
-            print("Got result without obs ID. Trying again.")
-            continue
-            
-        else:
-            return iNatID
-            
-    print("Couldn't post obs after 3 attempts. Dumping last response.\n")
-    with open("JSON_dump.json", "w", encoding="utf8") as outf:
-        outf.write(json.dumps(parsed, indent = 4, sort_keys = False))
-    raise MaxRequestAttemptsExceeded("Failed to create observation after 3 attempts. Last response: " + json.dumps(parsed))
+    parsed = careful_request("POST", "https://api.inaturalist.org/v1/observations",
+                             data=obj, headers=build_headers(jwt), retry_safe=False)
+    if isinstance(parsed, dict) and parsed.get("id") is not None:
+        return str(parsed["id"])
+    raise AmbiguousRequestError("Observation creation returned no ID; not retrying.")
         
 def post_fields(iNatID, fields, jwt):
 
@@ -427,20 +416,37 @@ def delete_field(iNatID, field_ID, jwt):
     parsed = careful_request("DELETE", build_request_URL(base_URL, endpoint), headers = build_headers(jwt))
 
 def post_tag(iNatID, tag, jwt):
-    
+
     base_URL = "https://api.inaturalist.org/v1"
     endpoint = "/observations/"+iNatID
-    
+
     parsed = careful_request("GET", build_request_URL(base_URL, endpoint), headers = build_headers())
 
-    original_tags = parsed["results"][0]["tags"]
-    
+    if parsed is None:
+        print("Warning: authorization failure fetching iNat observation " + str(iNatID) + " for tagging.")
+        return
+
+    if not isinstance(parsed, dict) or "results" not in parsed or not isinstance(parsed["results"], list) or len(parsed["results"]) == 0:
+        print("Warning: no results for iNat observation " + str(iNatID) + " when fetching tags.")
+        return
+
+    observation = parsed["results"][0]
+    if not isinstance(observation, dict):
+        print("Warning: invalid observation when fetching tags.")
+        return
+    original_tags = observation.get("tags") or []
+    if not isinstance(original_tags, list) or any(not isinstance(t, str) for t in original_tags):
+        print("Warning: invalid tags on iNat observation " + str(iNatID) + ".")
+        return
+    if tag in original_tags:
+        return
+
     ###
-    
+
     base_URL = "https://api.inaturalist.org/v1"
     endpoint = "/observations/"+iNatID
     obj = json.dumps({"ignore_photos": "1","observation":{"tag_list":", ".join(original_tags+[tag])}})
-    
+
     parsed = careful_request("PUT", build_request_URL(base_URL, endpoint), data = obj, headers = build_headers(jwt))
 
 def get_existing_proposal(iNatID):
@@ -453,20 +459,18 @@ def get_existing_proposal(iNatID):
     try:
         identifications = parsed["results"][0]["identifications"]
         identification = identifications[0]
-    
-    except:    
-        print("Couldn't find expected name proposal. Quitting.\n")
-        exit(1)
-    
-    else:
-        if len(identifications) > 1:
-            print("Warning: Unexpectedly found multiple name proposals already on iNat observation.")
-            
         identification_ID = str(identification["id"])
         taxon_ID = str(identification["taxon_id"])
         iNat_name = str(identification["taxon"]["name"])
         iNat_rank = str(identification["taxon"]["rank"])
-        
+
+    except Exception as e:
+        raise RuntimeError("Couldn't find expected name proposal on iNat observation " + str(iNatID) + ": " + repr(e)) from e
+
+    else:
+        if len(identifications) > 1:
+            print("Warning: Unexpectedly found multiple name proposals already on iNat observation.")
+
         return identification_ID, taxon_ID, iNat_name, iNat_rank
     
 def update_proposal(identification_ID, obj, jwt):
@@ -522,6 +526,26 @@ def add_obs_to_project(obs_ID, project_ID, jwt):
     
     parsed = careful_request("POST", build_request_URL(base_URL, endpoint), data = obj, headers = build_headers(jwt))
 
+def find_obs_by_description(username, search_text):
+    """Find an exact source marker, checking every page of search results."""
+
+    base_URL = "https://api.inaturalist.org/v1"
+    endpoint = "/observations"
+    params = {"user_login": username, "q": search_text, "search_on": "description", "per_page": "200"}
+    marker = re.compile(re.escape(search_text) + r"(?!\d)")
+    page = 1
+    while True:
+        params["page"] = page
+        parsed = careful_request("GET", build_request_URL(base_URL, endpoint, params), headers = build_headers())
+        if not isinstance(parsed, dict) or not isinstance(parsed.get("results"), list):
+            raise RuntimeError("Could not check iNaturalist for an existing import.")
+        for result in parsed["results"]:
+            if isinstance(result, dict) and result.get("id") is not None and marker.search(result.get("description") or ""):
+                return str(result["id"])
+        if len(parsed["results"]) < 200:
+            return None
+        page += 1
+
 def view_particular(iNatID):
 
     base_URL = "https://api.inaturalist.org/v1"
@@ -538,4 +562,3 @@ def view_particular(iNatID):
         return None
 
     return parsed["results"][0]
-    

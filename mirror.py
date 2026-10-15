@@ -4,12 +4,12 @@ import json
 import os
 import math
 import re
+import tempfile
 import time
 from datetime import date, datetime
 from sys import exit
-from threading import Timer
 from urllib.parse import urlparse, parse_qs
-from both_api import MaxRequestAttemptsExceeded
+from both_api import MaxRequestAttemptsExceeded, RequestRejected
 import inat_api
 import mo_api
 import myco_api
@@ -228,31 +228,38 @@ def names_match(MO_name, iNat_name, iNat_rank):
         return MO_name == iNat_name
 
 ##### LOADERS
+def _read_settings_file():
+
+    settings = {}
+
+    if os.path.isfile(SETTINGS_FILENAME):
+        with open(SETTINGS_FILENAME, encoding="utf8") as infile:
+            lines = infile.read().split("\n")
+    else:
+        lines = ""
+
+    for line in lines:
+        splat = line.split("\t")
+        if len(splat) == 2 and len(splat[1].strip()) > 0:
+            settings[splat[0]] = splat[1].strip()
+
+    return settings
+
 def LOAD_settings():
 
     global keep_backup
     global last_mirrored
-    
+
     global MO_username
     global MO_API_key
-    
+
     global iNat_username
     global iNat_password
     global iNat_JWT
     global iNat_JWT_timestamp
 
-    settings = {}
+    settings = _read_settings_file()
 
-    if os.path.isfile(SETTINGS_FILENAME):
-        lines = open(SETTINGS_FILENAME, encoding = "utf8").read().split("\n")
-    else:
-        lines = ""
-        
-    for line in lines:
-        splat = line.split("\t")
-        if len(splat) == 2 and len(splat[1].strip()) > 0:
-            settings[splat[0]] = splat[1].strip()
-        
     if "keep backup" in settings:
         if settings["keep backup"].strip().lower() == "true":
             keep_backup = True
@@ -301,15 +308,19 @@ def LOAD_log():
 
     global log
 
-    with open(LOG_FILENAME, encoding = "utf8") as infile:
-        lines = infile.read().split("\n")
+    try:
+        with open(LOG_FILENAME, encoding = "utf8") as infile:
+            lines = infile.read().split("\n")
+    except FileNotFoundError:
+        lines = []
         
     log = [line for line in lines if len(line) > 0]
 
 def LOAD_mirroreds():
 
     if os.path.isfile(COMPLETES_FILENAME):
-        lines = open(COMPLETES_FILENAME, encoding="utf8").read().split("\n")
+        with open(COMPLETES_FILENAME, encoding="utf8") as infile:
+            lines = infile.read().split("\n")
         already_mirrored_MOIDs = [line.strip() for line in lines if len(line.strip()) > 0]
     else:
         already_mirrored_MOIDs = []
@@ -427,13 +438,14 @@ def INPUT_pole():
 ##### MAJORS
 def update_settings(entries):
 
-    old_settings = LOAD_settings()
-    
+    old_settings = _read_settings_file()
+
     new_settings = old_settings | entries
-    
+
     to_write = "\n".join([key+"\t"+new_settings[key] for key in new_settings])
-    
-    open(SETTINGS_FILENAME, "w", encoding = "utf8").write(to_write)
+
+    with open(SETTINGS_FILENAME, "w", encoding="utf8") as outfile:
+        outfile.write(to_write)
 
 def set_MO_info():
 
@@ -506,8 +518,11 @@ def add_to_log(entry):
 
 def update_completes(MOIDs, appending):
 
-    with open(COMPLETES_FILENAME, encoding="utf8") as inf:
-        file_empty = (len(inf.read()) == 0)
+    if os.path.exists(COMPLETES_FILENAME):
+        with open(COMPLETES_FILENAME, encoding="utf8") as inf:
+            file_empty = (len(inf.read()) == 0)
+    else:
+        file_empty = True
 
     if appending:
     
@@ -524,8 +539,11 @@ def update_completes(MOIDs, appending):
 
 def update_incompletes(iNatID, adding):
 
-    with open(INCOMPLETES_FILENAME, encoding="utf8") as inf:
-        file_empty = (len(inf.read()) == 0)
+    if os.path.exists(INCOMPLETES_FILENAME):
+        with open(INCOMPLETES_FILENAME, encoding="utf8") as inf:
+            file_empty = (len(inf.read()) == 0)
+    else:
+        file_empty = True
 
     if adding:
         with open(INCOMPLETES_FILENAME, "a", encoding="utf8") as outf:
@@ -601,7 +619,8 @@ def backup_results(parsed):
 
     to_write = json.dumps(parsed, indent = 4, sort_keys = False)
 
-    open(filepath, "w", encoding="utf8").write(to_write)
+    with open(filepath, "w", encoding="utf8") as outfile:
+        outfile.write(to_write)
     
 def determine_taxon_ID(MO_obs, MO_name):
     
@@ -617,6 +636,11 @@ def determine_taxon_ID(MO_obs, MO_name):
         print("Name \""+MO_name+"\" is not in the local dictionary. Searching for it on iNat.")   
         add_to_log("name not in dictionary" + "\t" + MO_name)
         
+    return search_taxon_ID(MO_name)
+
+def search_taxon_ID(MO_name):
+    """Resolve a source name, falling back to its genus and then Life."""
+
     search_name, rank = get_iNat_search_info(MO_name)
     search_results = inat_api.search_for_name(search_name)
     perfect_match_ID = get_search_match(search_name, rank, search_results)
@@ -919,7 +943,8 @@ def get_image_data(MO_obs):
     image_captions = [im["notes"] if "notes" in im else "" for im in images]
     image_locations = [im["original_url"] for im in images]
     image_locations = [re.sub(r"\.raw$", ".jpg", loc, flags=re.IGNORECASE) for loc in image_locations] # workaround for .JPG images on MO that somehow were uploaded with .RAW extension
-    image_data = mo_api.get_images(image_locations)
+    image_data, downloaded_indices = mo_api.get_images(image_locations, return_indices=True)
+    image_captions = [image_captions[i] for i in downloaded_indices]
         
     return image_data, image_captions
 
@@ -1044,16 +1069,22 @@ def mirror_wrapper(num_to_mirror, already_mirrored_MOIDs, MO_page_to_start, MOID
             inat_api.post_fields(iNatID, fields, iNat_JWT)
             print("Finished observation fields.")
             
-            ### PROPOSAL ###            
+            ### PROPOSAL ###
             print("Updating name proposal on the new observation.")
-            identification_ID, taxon_ID, iNat_name, iNat_rank = inat_api.get_existing_proposal(iNatID)
-            proposal_obj = build_proposal_obj(iNatID, taxon_ID, MO_obs)
-            inat_api.update_proposal(identification_ID, proposal_obj, iNat_JWT)
-            print("Updated.")
-            
-            # see if names match #
-            if not names_match(MO_name, iNat_name, iNat_rank):
-                add_to_log("name mismatch" + "\t" + MO_name + "\t" + iNat_name+" ("+iNat_rank+")" + "\t" + MOID + "\t" + iNatID)
+            try:
+                identification_ID, taxon_ID, iNat_name, iNat_rank = inat_api.get_existing_proposal(iNatID)
+            except RuntimeError as e:
+                print("Warning: " + str(e) + " Observation remains incomplete.")
+                add_to_log("proposal update failed" + "\t" + MOID + "\t" + iNatID)
+                raise
+            else:
+                proposal_obj = build_proposal_obj(iNatID, taxon_ID, MO_obs)
+                inat_api.update_proposal(identification_ID, proposal_obj, iNat_JWT)
+                print("Updated.")
+
+                # see if names match #
+                if not names_match(MO_name, iNat_name, iNat_rank):
+                    add_to_log("name mismatch" + "\t" + MO_name + "\t" + iNat_name+" ("+iNat_rank+")" + "\t" + MOID + "\t" + iNatID)
                 
             ### IMAGES ###
             image_data, image_captions = get_image_data(MO_obs)
@@ -1129,7 +1160,7 @@ def parse_myco_occids(args):
 
                 if occid_col is not None:
                     for row in reader:
-                        val = row[occid_col].strip()
+                        val = (row.get(occid_col) or "").strip()
                         if val:
                             raw_tokens.append(val)
                 else:
@@ -1140,7 +1171,7 @@ def parse_myco_occids(args):
                         if len(row) > 0:
                             val = row[0].strip()
                             if val:
-                                if i == 0 and not val.isdigit():
+                                if i == 0 and extract_occid(val) is None:
                                     continue
                                 raw_tokens.append(val)
         except FileNotFoundError:
@@ -1184,15 +1215,19 @@ def normalize_myco_date(raw_date):
         year, month, day = m.group(1), m.group(2), m.group(3)
         if day == "00" and month == "00":
             return (year, raw_date)
-        elif day == "00":
+        elif day == "00" and "01" <= month <= "12":
             return (year + "-" + month, raw_date)
         else:
+            try:
+                date.fromisoformat(raw_date)
+            except ValueError:
+                return (None, raw_date)
             return (raw_date, None)
 
     # already just YYYY or YYYY-MM
     if re.match(r"^\d{4}$", raw_date):
         return (raw_date, None)
-    if re.match(r"^\d{4}-\d{2}$", raw_date):
+    if re.match(r"^\d{4}-(0[1-9]|1[0-2])$", raw_date):
         return (raw_date, None)
 
     # anything else — don't send to iNat, just record verbatim in notes
@@ -1203,10 +1238,10 @@ def normalize_myco_date(raw_date):
 def load_myco_completes():
 
     if os.path.isfile(MYCO_COMPLETES_FILENAME):
-        lines = open(MYCO_COMPLETES_FILENAME, encoding="utf8").read().split("\n")
+        with open(MYCO_COMPLETES_FILENAME, encoding="utf8") as infile:
+            lines = infile.read().split("\n")
         return set(line.strip() for line in lines if line.strip())
     else:
-        open(MYCO_COMPLETES_FILENAME, "w", encoding="utf8").write("")
         return set()
 
 def update_myco_completes(occid):
@@ -1220,13 +1255,14 @@ def update_myco_completes(occid):
             f.write(occid)
         else:
             f.write("\n" + occid)
+        f.flush()
+        os.fsync(f.fileno())
 
 MYCO_INCOMPLETES_HEADER = "occid\tiNatID\tstage"
 
 def load_myco_incompletes():
 
     if not os.path.isfile(MYCO_INCOMPLETES_FILENAME):
-        open(MYCO_INCOMPLETES_FILENAME, "w", encoding="utf8").write(MYCO_INCOMPLETES_HEADER + "\n")
         return []
 
     rows = []
@@ -1241,6 +1277,27 @@ def load_myco_incompletes():
 
     return rows
 
+def _write_myco_incompletes(rows):
+    """Replace tracking atomically so interruption preserves the previous file."""
+
+    directory = os.path.dirname(os.path.abspath(MYCO_INCOMPLETES_FILENAME))
+    with tempfile.NamedTemporaryFile(mode="w", encoding="utf8", dir=directory,
+                                     prefix=".myco_incompletes-", delete=False) as outfile:
+        temporary_name = outfile.name
+        try:
+            outfile.write(MYCO_INCOMPLETES_HEADER + "\n")
+            outfile.write("\n".join(row["occid"] + "\t" + row["iNatID"] + "\t" + row["stage"] for row in rows))
+            outfile.flush()
+            os.fsync(outfile.fileno())
+        except BaseException:
+            os.unlink(temporary_name)
+            raise
+    try:
+        os.replace(temporary_name, MYCO_INCOMPLETES_FILENAME)
+    finally:
+        if os.path.exists(temporary_name):
+            os.unlink(temporary_name)
+
 def update_myco_incomplete(occid, iNatID, stage):
 
     rows = load_myco_incompletes()
@@ -1254,22 +1311,30 @@ def update_myco_incomplete(occid, iNatID, stage):
     if not found:
         rows.append({"occid": occid, "iNatID": iNatID, "stage": stage})
 
-    with open(MYCO_INCOMPLETES_FILENAME, "w", encoding="utf8") as f:
-        f.write(MYCO_INCOMPLETES_HEADER + "\n")
-        f.write("\n".join(row["occid"] + "\t" + row["iNatID"] + "\t" + row["stage"] for row in rows))
+    _write_myco_incompletes(rows)
 
 def remove_myco_incomplete(occid):
 
     rows = load_myco_incompletes()
     rows = [row for row in rows if row["occid"] != occid]
 
-    with open(MYCO_INCOMPLETES_FILENAME, "w", encoding="utf8") as f:
-        f.write(MYCO_INCOMPLETES_HEADER + "\n")
-        f.write("\n".join(row["occid"] + "\t" + row["iNatID"] + "\t" + row["stage"] for row in rows))
+    _write_myco_incompletes(rows)
 
 def deal_with_myco_incompletes():
 
     incompletes = load_myco_incompletes()
+    completes = load_myco_completes()
+    # A crash after recording completion can leave a harmless stale incomplete.
+    for row in incompletes:
+        if row["occid"] in completes:
+            remove_myco_incomplete(row["occid"])
+    incompletes = [row for row in incompletes if row["occid"] not in completes]
+
+    for row in incompletes:
+        if not row["iNatID"]:
+            print("Creation outcome is unknown for occid " + row["occid"] +
+                  ". Check your iNaturalist observations before clearing its tracking row.")
+    incompletes = [row for row in incompletes if row["iNatID"]]
 
     if len(incompletes) == 0:
         return
@@ -1292,9 +1357,7 @@ def deal_with_myco_incompletes():
             print("Deleting...")
             for row in incompletes:
                 inat_api.delete_observation(row["iNatID"], iNat_JWT)
-            # rewrite file once with all deleted rows removed
-            with open(MYCO_INCOMPLETES_FILENAME, "w", encoding="utf8") as f:
-                f.write(MYCO_INCOMPLETES_HEADER + "\n")
+                remove_myco_incomplete(row["occid"])
             print("Finished deleting.")
 
 ##### MYCOPORTAL -> INAT MAPPING
@@ -1307,28 +1370,7 @@ def build_myco_creation_obj(occurrence, occid, args):
     sciname = resolve_myco_field(occurrence, "sciname", "scientificName")
     display_name = sciname if sciname else "Unknown"
 
-    if sciname:
-        search_name, rank = get_iNat_search_info(sciname)
-        search_results = inat_api.search_for_name(search_name)
-        perfect_match_ID = get_search_match(search_name, rank, search_results)
-
-        if perfect_match_ID is not None:
-            params["taxon_id"] = perfect_match_ID
-        elif " " in search_name:
-            search_genoid = search_name.split(" ")[0]
-            print("Not found. Searching for \"" + search_genoid + "\" instead.")
-            search_results = inat_api.search_for_name(search_genoid)
-            genoid_match_ID = get_search_match(search_genoid, None, search_results)
-            if genoid_match_ID is not None:
-                params["taxon_id"] = genoid_match_ID
-            else:
-                print("Could not find name \"" + search_genoid + "\" on iNat. Defaulting to taxon \"Life\".")
-                params["taxon_id"] = "48460"
-        else:
-            print("Could not find name \"" + sciname + "\" on iNat. Defaulting to taxon \"Life\".")
-            params["taxon_id"] = "48460"
-    else:
-        params["taxon_id"] = "48460"
+    params["taxon_id"] = search_taxon_ID(sciname) if sciname else "48460"
 
     # date
     raw_date = resolve_myco_field(occurrence, "eventDate", "date")
@@ -1350,17 +1392,20 @@ def build_myco_creation_obj(occurrence, occid, args):
     lng = resolve_myco_field(occurrence, "decimalLongitude")
     if lat is not None and lng is not None:
         try:
-            params["latitude"] = float(lat)
-            params["longitude"] = float(lng)
+            latitude, longitude = float(lat), float(lng)
         except (ValueError, TypeError):
             pass
         else:
-            unc = resolve_myco_field(occurrence, "coordinateUncertaintyInMeters")
-            if unc is not None:
-                try:
-                    params["positional_accuracy"] = int(float(unc))
-                except (ValueError, TypeError):
-                    pass
+            if math.isfinite(latitude) and math.isfinite(longitude) and -90 <= latitude <= 90 and -180 <= longitude <= 180:
+                params["latitude"], params["longitude"] = latitude, longitude
+                unc = resolve_myco_field(occurrence, "coordinateUncertaintyInMeters")
+                if unc is not None:
+                    try:
+                        accuracy = float(unc)
+                        if math.isfinite(accuracy) and accuracy >= 0:
+                            params["positional_accuracy"] = int(accuracy)
+                    except (ValueError, TypeError):
+                        pass
 
     # description (skeleton)
     params["description"] = "MycoPortal occid: " + str(occid) + "\nSource: " + MYCO_SOURCE_URL + str(occid) + "\n\nThis observation is being imported from MycoPortal. Refresh soon to see the full observation."
@@ -1416,7 +1461,7 @@ def build_myco_notes(occurrence, occid, verbatim_date_note, media_successes, med
 
     # 1. Source link
     url = MYCO_SOURCE_URL + str(occid)
-    sections.append("Imported from MycoPortal\nSource: <a href=\"" + url + "\">" + url + "</a>")
+    sections.append("MycoPortal occid: " + str(occid) + "\nImported from MycoPortal\nSource: <a href=\"" + url + "\">" + url + "</a>")
 
     # 2. Collector info
     collector_parts = []
@@ -1572,25 +1617,40 @@ def import_myco_occurrence(occid, args):
     creation_obj, display_name, verbatim_date_note = build_myco_creation_obj(occurrence, occid, args)
     print("Creating skeleton observation for \"" + display_name + "\".")
 
+    occid_marker = "MycoPortal occid: " + str(occid)
     iNatID = None
-    try:
-        iNatID = inat_api.create_obs(creation_obj, iNat_JWT)
-    except MaxRequestAttemptsExceeded:
-        # retry once without date — iNat may reject partial/unusual dates
-        creation_params = json.loads(creation_obj)
-        if "observed_on_string" in creation_params.get("observation", {}):
-            print("Create failed. Retrying without date field...")
-            if verbatim_date_note is None:
-                verbatim_date_note = creation_params["observation"]["observed_on_string"]
-            del creation_params["observation"]["observed_on_string"]
-            try:
-                iNatID = inat_api.create_obs(json.dumps(creation_params), iNat_JWT)
-            except MaxRequestAttemptsExceeded:
-                print("Could not create observation for occid " + str(occid) + ". Skipping.")
-                return False
-        else:
-            print("Could not create observation for occid " + str(occid) + ". Skipping.")
+    # Persist before posting: a timeout or interrupt must not allow a blind rerun.
+    update_myco_incomplete(occid, "", "creation_pending")
+    creation_params = json.loads(creation_obj)
+    for attempt in range(2):
+        try:
+            iNatID = inat_api.create_obs(json.dumps(creation_params), iNat_JWT)
+            break
+        except RequestRejected as e:
+            # Retry without a date only after an explicit date validation rejection.
+            date_rejected = e.status_code in (400, 422) and re.search(r"\bdate\b|observed_on", e.content or "", re.IGNORECASE)
+            if attempt == 0 and date_rejected and "observed_on_string" in creation_params["observation"]:
+                print("Date was rejected. Retrying without date field...")
+                rejected_date = creation_params["observation"].pop("observed_on_string")
+                if verbatim_date_note is None:
+                    verbatim_date_note = rejected_date
+                continue
+            remove_myco_incomplete(occid)
+            print("Could not create observation for occid " + str(occid) + ": " + str(e))
             return False
+        except MaxRequestAttemptsExceeded:
+            update_myco_incomplete(occid, "", "creation_unknown")
+            print("Creation outcome is unknown. Checking for an existing observation...")
+            try:
+                iNatID = inat_api.find_obs_by_description(iNat_username, occid_marker)
+            except Exception as e:
+                print("Could not check for an existing observation: " + str(e))
+            if iNatID is None:
+                print("Not retrying creation for occid " + str(occid) +
+                      "; a created observation may not yet appear in search. Tracking retained.")
+                return False
+            print("Found already-created observation " + str(iNatID) + ". Using it.")
+            break
 
     if iNatID is None:
         print("Could not create observation for occid " + str(occid) + ". Skipping.")
@@ -1605,6 +1665,7 @@ def import_myco_occurrence(occid, args):
         print("DEBUG stage: skeleton_created")
 
     # 7. Post fields
+    fields_failed = False
     fields = get_myco_fields(occurrence, occid)
     if fields:
         print("Posting observation fields.")
@@ -1614,9 +1675,11 @@ def import_myco_occurrence(occid, args):
             if args.debug:
                 print("DEBUG stage: fields_posted")
         except MaxRequestAttemptsExceeded:
+            fields_failed = True
             print("Warning: failed to post fields for occid " + str(occid) + ". Continuing.")
             update_myco_incomplete(occid, iNatID, "fields_failed")
         except Exception as e:
+            fields_failed = True
             print("Warning: exception posting fields for occid " + str(occid) + ": " + repr(e) + ". Continuing.")
             update_myco_incomplete(occid, iNatID, "fields_failed")
     else:
@@ -1686,6 +1749,11 @@ def import_myco_occurrence(occid, args):
         return False
 
     # 10. Complete
+    if fields_failed or all_media_failures:
+        stage = "fields_and_photos_failed" if fields_failed and all_media_failures else "fields_failed" if fields_failed else "photos_partial"
+        update_myco_incomplete(occid, iNatID, stage)
+        print("Import is incomplete for occid " + str(occid) + ". Tracking retained for recovery.")
+        return False
     update_myco_completes(occid)
     remove_myco_incomplete(occid)
     print("Done importing occurrence " + str(occid) + " -> iNat " + iNatID + ".")
@@ -1695,23 +1763,28 @@ def import_myco_occurrence(occid, args):
 def run_myco_import(occids, args):
 
     completes = load_myco_completes()
-    new_occids = [oid for oid in occids if oid not in completes]
+    incompletes = {row["occid"] for row in load_myco_incompletes()}
+    new_occids = [oid for oid in occids if oid not in completes and oid not in incompletes]
     skipped = len(occids) - len(new_occids)
 
     if skipped > 0:
-        print(str(skipped) + " occid(s) already imported (in " + MYCO_COMPLETES_FILENAME + "), skipping.")
+        print(str(skipped) + " occid(s) already imported or awaiting incomplete-import recovery, skipping.")
 
     print(str(len(new_occids)) + " of " + str(len(occids)) + " occids are new.")
 
     if len(new_occids) == 0:
         print("Nothing to import.")
-        return
+        return not any(oid in incompletes and oid not in completes for oid in occids)
 
     successes = 0
     failures = 0
     for i, occid in enumerate(new_occids):
         print("\n[" + str(i + 1) + "/" + str(len(new_occids)) + "]")
-        result = import_myco_occurrence(occid, args)
+        try:
+            result = import_myco_occurrence(occid, args)
+        except Exception as e:
+            print("Import failed for occid " + str(occid) + ": " + repr(e))
+            result = False
         if result:
             successes += 1
         else:
@@ -1720,7 +1793,8 @@ def run_myco_import(occids, args):
     print("\nMycoPortal import complete.")
     print("  Successes: " + str(successes))
     print("  Failures: " + str(failures))
-    print("  Skipped (already done): " + str(skipped))
+    print("  Skipped (completed or incomplete): " + str(skipped))
+    return failures == 0 and not any(oid in incompletes and oid not in completes for oid in occids)
 
 def main():
 
@@ -1733,18 +1807,20 @@ def main():
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--obscure-large-uncertainty", action="store_true")
     args = parser.parse_args()
+    if args.max_images is not None and args.max_images < 0:
+        parser.error("--max-images must be zero or greater")
 
     if args.myco is not None or args.myco_csv is not None:
         # MycoPortal mode
+        occids = parse_myco_occids(args)
+        if len(occids) == 0:
+            parser.error("No valid occids provided.")
         LOAD_settings()
         if not args.dry_run:
             set_iNat_info()
             deal_with_myco_incompletes()
-        occids = parse_myco_occids(args)
-        if len(occids) == 0:
-            print("No valid occids provided.")
-            return
-        run_myco_import(occids, args)
+        if not run_myco_import(occids, args):
+            return 1
     else:
         # Original MO mode
         print("\nWelcome to the mirroring.")
@@ -1809,10 +1885,9 @@ def main():
          
 if __name__ == "__main__":
     try:
-        main()
+        exit(main())
     except Exception as e:
         print("\nThe program has crashed.")
         print("Exception: "+repr(e))
-        input("\nPress enter to exit.")
         print("Goodbye.\n")
         exit(1)

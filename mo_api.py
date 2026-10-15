@@ -27,9 +27,9 @@ def bad_API_key(parsed):
         bad = re.search("BadApiKey", parsed["errors"][0]["code"], flags=re.IGNORECASE)
         bad = bad or re.search("Bad key", parsed["errors"][0]["details"], flags=re.IGNORECASE)
         
-        return bad
+        return bool(bad)
     
-    except:
+    except (KeyError, TypeError, IndexError):
         return False
         
 def confirm_API_key(api_key, username):
@@ -181,20 +181,26 @@ def get_single_obs(username, MOID, api_key):
     else:
         return full_obs
                
-def get_images(urls):
+def get_images(urls, return_indices=False):
 
     images = []
-    
-    for url in urls:
+    downloaded_indices = []
+
+    for index, url in enumerate(urls):
 
         content = careful_request("GET", url, headers = USER_AGENT, demand_json = False)
-        
+
+        if content is None:
+            print("Warning: got no response for image URL " + str(url) + ". Skipping.")
+            continue
+
         if len(content) < 5000:
             print("Warning: got file possibly too small to be an image ("+str(len(content))+" bytes).")
-            
+
         images.append(content)
-        
-    return images
+        downloaded_indices.append(index)
+
+    return (images, downloaded_indices) if return_indices else images
     
 def add_link(username, MOID, iNatID, current_date, MO_API_key):
 
@@ -227,17 +233,17 @@ def add_link(username, MOID, iNatID, current_date, MO_API_key):
     
     
     ### patch new notes ###
-            
+
     base_URL = "https://mushroomobserver.org/api2"
     endpoint = "/observations"
-    params = {"user" : username, 
-                   "api_key" : MO_API_key, 
-                   "id" : MOID, 
-                   "set_notes" : new_notes, 
-                   "log" : "no", 
+    patch_data = {"user" : username,
+                   "api_key" : MO_API_key,
+                   "id" : MOID,
+                   "set_notes" : new_notes,
+                   "log" : "no",
                    "format" : "json"}
-    
-    parsed = careful_request("PATCH", build_request_URL(base_URL, endpoint, params), headers = USER_AGENT)
+
+    parsed = careful_request("PATCH", build_request_URL(base_URL, endpoint), data = patch_data, headers = USER_AGENT)
     
     if bad_API_key(parsed):
         print("MO API key failed. Quitting.\n")
@@ -294,11 +300,3 @@ def view_particular(MOID):
         return None
 
     return parsed["results"][0]
-    
-    #print(json.dumps(parsed, indent = 4, sort_keys = False))
-    
-#view_particular("371217")
-
-#full_obses = get_full_obses("myxomop",0,None)
-#print("LENGTH IS "+str(len(full_obses)))
-#print(json.dumps(full_obses, indent=4, sort_keys=False)[:700])

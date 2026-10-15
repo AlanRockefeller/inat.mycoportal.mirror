@@ -1,5 +1,4 @@
 import json
-import requests
 from both_api import careful_request, MaxRequestAttemptsExceeded
 
 MYCO_BASE_URL = "https://mycoportal.org/portal/api/v2"
@@ -64,14 +63,14 @@ def get_media_fallback(occid):
 def download_image(url, timeout_seconds=30):
 
     try:
-        response = requests.get(url, headers=USER_AGENT, timeout=timeout_seconds)
+        content = careful_request("GET", url, headers=USER_AGENT,
+                                  demand_json=False, timeout=timeout_seconds)
     except Exception as e:
         return (None, "exception: " + repr(e))
 
-    if response.status_code != 200:
-        return (None, "HTTP status " + str(response.status_code))
+    if content is None:
+        return (None, "image server denied access")
 
-    content = response.content
     if len(content) < 5000:
         return (None, "response too small (" + str(len(content)) + " bytes) — likely not an image")
 
@@ -86,6 +85,10 @@ def download_images(media_list, preferred_size="medium", max_images=None, debug=
     for media in media_list:
         if max_images is not None and count >= max_images:
             break
+
+        if not isinstance(media, dict):
+            failures.append(({}, None, "invalid media item"))
+            continue
 
         # skip non-image formats
         fmt = media.get("format", None)

@@ -2,6 +2,41 @@
 
 This is a command-line program that will copy your observations, one-way, from [Mushroom Observer](https://mushroomobserver.org/) to [iNaturalist](https://www.inaturalist.org/). It is designed to require as little input from you as possible, to preserve almost all content from the MO observations, and to fill in iNat Observation Fields where appropriate. The new (iNat) and original (MO) observations will have links to each other; the original observation will not be modified other than by the addition of that link. If and when the original (MO) observation is modified subsequently, this program will NOT reflect the changes on iNat.
 
+It also imports MycoPortal occurrence records, photos, specimen fields, and source attribution into iNaturalist.
+
+## Run from source and import MycoPortal records
+
+With Python 3.9 or later, install the dependency and preview a record:
+
+```sh
+python3 -m pip install -r requirements.txt
+python3 mirror.py --myco 5649507 --dry-run
+```
+
+Import by occurrence ID, full MycoPortal URL, or a CSV with an `occid` column:
+
+```sh
+python3 mirror.py --myco 5649507 5649508
+python3 mirror.py --myco 'https://mycoportal.org/portal/collections/individual/index.php?occid=5649507'
+python3 mirror.py --myco-csv occurrences.csv --image-size original --max-images 3
+```
+
+The import prompts for your iNaturalist username and browser authorization. MycoPortal mode does not need a Mushroom Observer account. `--dry-run` fetches and displays source metadata without authenticating to iNaturalist, downloading photos, or writing tracking files. `--debug` displays detailed source data. `--obscure-large-uncertainty` obscures locations with uncertainty over 100 km; records with `recordSecurity` greater than zero are obscured automatically. `--max-images` limits successful image downloads (zero skips photos).
+
+Completed occurrence IDs are recorded in `myco_completes.txt`. Failed or interrupted imports remain in `myco_incompletes.tsv` and are skipped on reruns. Field, photo, and note failures keep the import incomplete and produce a nonzero exit status. On the next non-dry run, you can delete tracked partial observations and reimport them.
+
+If creation times out, the program searches for the occurrence marker before proceeding. A missing search result cannot prove that creation failed, so it retains a row with an empty `iNatID` and does not repeat creation. Check your iNaturalist observations before manually reconciling that row: enter the existing observation ID to make it available for the normal incomplete-import cleanup, or remove the row only after confirming that no observation was created. Keep the tracking files between runs and run one importer at a time from a given folder.
+
+Settings, tokens, backups, and runtime tracking files are excluded from Git. They are stored in the current working directory.
+
+## Tests
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+The tests isolate tracking files in temporary directories and block real HTTP requests. GitHub Actions runs the suite on Python 3.9 and 3.14.
+
 ## What you will have to do
 
 1. **Download** one of the .rar files in [the latest release](https://github.com/JacobPulk/mirror/releases/latest):  

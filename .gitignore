@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+PRIVATE settings.txt
+backup/
+log.txt
+completes.txt
+incompletes.txt
+myco_completes.txt
+myco_incompletes.tsv
+.myco_incompletes-*
+JSON_dump.json
+non_JSON_dump.html
