@@ -171,6 +171,25 @@ class MORecoveryTests(IsolatedTest):
         self.assertEqual(mirror.LOAD_incompletes(), ["99"])
         self.assertEqual(mirror.load_mo_pending()[0]["iNatID"], "99")
 
+    def test_cleanup_interrupt_does_not_restore_deleted_observation_pending_row(self):
+        mirror.update_mo_pending("12", "99", "skeleton_created")
+        mirror.update_incompletes("99", True)
+        update = mirror.update_incompletes
+        def interrupt_after_pending_removal(iNatID, adding):
+            if not adding:
+                raise KeyboardInterrupt()
+            return update(iNatID, adding)
+        with patch.object(mirror, "INPUT_yes_or_no", return_value=True), patch.object(
+            inat_api, "delete_observation"
+        ), patch.object(mirror, "update_incompletes", side_effect=interrupt_after_pending_removal):
+            with self.assertRaises(KeyboardInterrupt):
+                mirror.deal_with_incompletes()
+        self.assertEqual(mirror.load_mo_pending(), [])
+        self.assertEqual(mirror.LOAD_incompletes(), ["99"])
+        mirror.reconcile_mo_pending()
+        self.assertEqual(mirror.load_mo_pending(), [])
+        self.search.assert_not_called()
+
     def test_remote_field_lookup_does_not_mark_link_pending_complete(self):
         mirror.update_mo_pending("12", "99", "link_pending")
         with patch.object(mirror, "mirroreds_pause"), patch.object(inat_api, "get_mirrored_MOIDs", return_value={"12", "13"}):

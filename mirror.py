@@ -665,10 +665,10 @@ def deal_with_incompletes():
                 print("Deleting...")
                 for incomplete in incompletes:
                     inat_api.delete_observation(incomplete, iNat_JWT)
-                    update_incompletes(incomplete, False)
                     for row in pending:
                         if row["iNatID"] == incomplete:
                             remove_mo_pending(row["MOID"])
+                    update_incompletes(incomplete, False)
                 print("Finished deleting.")
 
 def get_already_mirrored_MOIDs():

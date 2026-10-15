@@ -58,7 +58,7 @@ No live observations were created, updated, or deleted during validation. A newl
 
 ## PR #2 follow-up
 
-All seven actionable threads on commit `0bb609b` have fixes and regression coverage:
+All seven actionable threads on commit `0bb609b`, plus the cleanup-order follow-up on `e8dc2d3`, have fixes and regression coverage:
 
 | Review concern | Fix and verification |
 | --- | --- |
@@ -69,5 +69,6 @@ All seven actionable threads on commit `0bb609b` have fixes and regression cover
 | [Ambiguous MO creation](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278898299) | Save pending/unknown MOID state before posting, preserve a source marker, persist recovered IDs before recovery, and exclude pending MOIDs from reruns and completion discovery. |
 | [MO back-link failure](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278898309) | Persist `link_pending` separately from deletion-prone incomplete IDs; protect populated mirrors, check for the exact existing link before PATCH, and retry only the back-link during recovery. |
 | [Non-image downloads](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4278898316) | Reject HTML and unsupported formats before upload; accept the documented JPG, PNG, and GIF signatures. |
+| [Interrupted cleanup ordering](https://github.com/AlanRockefeller/inat.mycoportal.mirror/pull/2#discussion_r4282304818) | Remove the pending MO row after confirmed deletion and before clearing the legacy incomplete ID, so an interruption cannot restore a blocking pending record. |
 
-Fault-injection tests cover interrupted creation, failed searches, repeated runs, rejected and uncertain back-links, stale completion/pending records, and lost DELETE responses. Tests also verify that back-link recovery does not repeat iNaturalist creation, field, photo, or note writes. The expanded suite has 77 tests, with real HTTP requests blocked.
+Fault-injection tests cover interrupted creation and cleanup, failed searches, repeated runs, rejected and uncertain back-links, stale completion/pending records, and lost DELETE responses. Tests also verify that back-link recovery does not repeat iNaturalist creation, field, photo, or note writes. The expanded suite has 78 tests, with real HTTP requests blocked.
