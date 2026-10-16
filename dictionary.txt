@@ -1,0 +1,2628 @@
+Slime	496778
+Abortiporus	118049
+Abortiporus biennis	118041
+Acarospora	117932
+Acervus	597353
+Acrospermum	374446
+Aegerita candida	1159184
+Agaricaceae	47394
+Agaricaceae sensu lato	785517
+Agaricales	47167
+Agaricales sensu lato	50814
+Agaricineae	785517
+Agaricus	49548
+Agaricus "tawny-gold"	49548
+Agaricus albolutescens	335934
+Agaricus augustus	49547
+Agaricus auricolor	499795
+Agaricus auricolor group	499795
+Agaricus benesii	480761
+Agaricus benesii group	480761
+Agaricus bernardi	343586
+Agaricus bisporus	61395
+Agaricus bitorquis	58696
+Agaricus californicus	118379
+Agaricus campestris	143563
+Agaricus campestris group	143563
+Agaricus comtulus	179252
+Agaricus cupreobrunneus	118384
+Agaricus deserticola	349998
+Agaricus diminutivus group	118387
+Agaricus diospyros	861024
+Agaricus floridanus	1268176
+Agaricus inapertus	699645
+Agaricus incultorum	626841
+Agaricus placomyces	194251
+Agaricus sect. Arvenses	847564
+Agaricus sect. Bivelares	824808
+Agaricus sect. Minores	824806
+Agaricus sect. Sanguinolenti	824817
+Agaricus sect. Xanthodermatei	793870
+Agaricus sect. Xanthodermati	793870
+Agaricus vinaceovirens	878211
+Agaricus xanthodermus	118394
+Agaricus xanthodermus group	118394
+Agrocybe	118395
+Agrocybe acericola	381183
+Agrocybe arvalis	350013
+Agrocybe dura	354697
+Agrocybe firma	552725
+Agrocybe molesta	354697
+Agrocybe pediades	118393
+Agrocybe pediades group	118393
+Agrocybe praecox	118391
+Agrocybe praecox group	118391
+Agrocybe putaminum	343465
+Agrocybe retigera	179246
+Agrocybe rivulosa	712384
+Agrocybe sensu lato	118395
+Agrocybe smithii	711678
+Agrocybe sororia	379738
+Akanthomyces	179737
+Akanthomyces aranearum	179739
+Albatrellus flettii	1150978
+Alboleptonia adnatifolia	700952
+Albomagister subaustralis	911637
+Aleuria aurantia	48716
+Aleurodiscus oakesii	208022
+Allodus podophylli	417511
+Alnicola	864956
+Alternaria	327996
+Amanita	48419
+Amanita "sp-MD01"	932781
+Amanita "sp-S01"	1144758
+Amanita "sp-S12"	906594
+Amanita "sp-amerirubescens05"	484922
+Amanita abrupta	324361
+Amanita amerifulva group	63027
+Amanita amerirubescens group	484922
+Amanita arkansana	465695
+Amanita atkinsoniana	334648
+Amanita banningiana	906595
+Amanita bisporigera	125390
+Amanita bisporigera group	125390
+Amanita brunnescens	58692
+Amanita calyptratoides	118389
+Amanita canescens	504582
+Amanita chlorinosma	350034
+Amanita cinereopannosa	503341
+Amanita cornelihybrida	1144777
+Amanita crenulata	543032
+Amanita cruentilemurum	932781
+Amanita daucipes	350035
+Amanita elliptosperma	418183
+Amanita farinosa	350038
+Amanita farinosa sensu auct. Pacific Northwest states	350038
+Amanita flavoconia	125389
+Amanita flavoconia group	125389
+Amanita flavorubens	350043
+Amanita lavendula	810894
+Amanita lavendula group	810894
+Amanita magnivelaris	350049
+Amanita magniverrucata	54359
+Amanita minutula	48419
+Amanita multisquamosa	154596
+Amanita muscaria sensu auct. amer.	48715
+Amanita muscaria var. flavivolvata	335932
+Amanita muscaria var. guessowii	321524
+Amanita novinupta	57691
+Amanita ocreata	67356
+Amanita onusta	133931
+Amanita pantherina group	1144756
+Amanita pantherina sensu auct. amer.	1144756
+Amanita parcivolvata	500030
+Amanita persicina	504587
+Amanita praecox	1144756
+Amanita ravenelii	350056
+Amanita rhopalopus	120379
+Amanita rubescens group	67661
+Amanita russuloides	322873
+Amanita sect. Amanita	954920
+Amanita sect. Amidella	942845
+Amanita sect. Caesareae	906595
+Amanita sect. Lepidella sensu Bas	906596
+Amanita sect. Phalloideae	926048
+Amanita sect. Vaginatae sensu Zhu L. Yang	906594
+Amanita sect. Validae	932781
+Amanita solaniolens	499988
+Amanita sponsus	932781
+Amanita spreta	335052
+Amanita stirps Sororcula	906594
+Amanita subg. Lepidella	906596
+Amanita subsect. Solitariae	1370527
+Amanita velatipes	350068
+Amanita velosa	51314
+Amanita whetstoneae	942845
+Amanita xanthomitra	906594
+Amniculicolaceae	791631
+Amphichorda felina	960394
+Ampulloclitocybe clavipes	194737
+Amylocorticium	373923
+Amylocorticium canadense	1144746
+Amylostereum chailletii	381233
+Angelina rufescens	704775
+Annulohypoxylon annulatum	381239
+Annulohypoxylon cohaerens	979413
+Annulohypoxylon truncatum	337046
+Anteaglonium globosum	697676
+Anteaglonium parvulum	932933
+Anthina	499865
+Anthostomella	354180
+Anthracophyllum	355888
+Antrodia	118048
+Antrodia favescens	603958
+Antrodia heteromorpha	118039
+Antrodiella incrustans	350100
+Antrodiella semisupina	350101
+Aphanobasidium gaspesicum	1044118
+Aphroditeola olida	499700
+Apiosporina morbosa	58700
+Arachnopeziza	353333
+Arachnopeziza aurata	629276
+Arachnopeziza aurelia	350112
+Arachnopeziza trabinelloides	884927
+Arcyria	56261
+Arcyria cinerea	56258
+Arcyria ferruginea	332465
+Arcyria magna	564325
+Armillaria	55930
+Armillaria gallica	118401
+Armillaria mellea	55950
+Armillaria mellea group	55950
+Armillaria sinapina	179238
+Armillaria tabescens	895035
+Arrhenia	67344
+Arrhenia "sp-G-2"	67344
+Arrhenia chlorocyanea	354693
+Arrhenia epichysium	67343
+Arrhenia retiruga	118402
+Arthromyces claviformis	1366540
+Arthrophaga myriapodina	570425
+Artomyces pyxidatus	334704
+Ascobolus	118011
+Ascobolus crenulatus	381290
+Ascocoryne	49072
+Ascocoryne sarcoides	49075
+Ascomycota	48250
+Ascotremella faginea	381308
+Asproinocybe	518991
+Asterella	53748
+Asterophora lycoperdoides	125378
+Asterophora parasitica	194272
+Asterostroma andinum	381324
+Astraeus	48774
+Astraeus morganii	565086
+Athallia holocarpa	462408
+Athelia	175896
+Athelia acrospora	381339
+Athelia arachnoidea	399803
+Athelia bombacina	704767
+Athelia epiphylla	214543
+Athelia rolfsii	360229
+Atheniella	487322
+Atheniella adonis	485685
+Atheniella aurantiidisca	499651
+Atheniella leptophylla	1138418
+Atkinsonella hypoxylon	1104074
+Aureoboletus auriporus	350154
+Aureoboletus betula	1125679
+Aureoboletus flaviporus	430159
+Aureoboletus innixus	499633
+Aureoboletus roxanae	552814
+Auricularia	50817
+Auricularia auricula-judae	1138427
+Auricularia fuscosuccinea	328246
+Auricularia mesenterica	1138505
+Auricularia nigricans	493340
+Auriculariaceae	50816
+Auriculariales	50815
+Auriscalpium vulgare	55175
+Austroboletus gracilis	350157
+Austroboletus gracilis var. gracilis	1054671
+Bactridium	174597
+Bactridium flavum	774574
+Badhamia utricularis	56264
+Baeospora myosura	118349
+Baeospora myriadophylla	560219
+Balsamia	175948
+Bankera violascens	1148372
+Baorangia bicolor	636546
+Baorangia bicolor group	636545
+Baorangia pseudocalopus	880979
+Basidioradulum radula	341834
+Battarrea phalloides	119969
+Battarreoides diguetii	350168
+Beauveria	328139
+Beauveria bassiana	862160
+Beauveria brongniartii	381377
+Berkleasmium concinnum	211220
+Biannulariaceae	924348
+Biscogniauxia atropunctata	127050
+Biscogniauxia marginata	540665
+Biscogniauxia nummularia	350184
+Bisporella citrina	955949
+Bjerkandera adusta	118038
+Bjerkandera fumosa	326188
+Blistum tomentosum	518858
+Bogbodia uda	499737
+Bolbitiaceae	55472
+Bolbitius	55473
+Bolbitius aleuriatus sensu CA	344411
+Bolbitius callistus	1259515
+Bolbitius coprophilus	179228
+Bolbitius lacteus	55473
+Bolbitius reticulatus	205149
+Bolbitius reticulatus group	205149
+Bolbitius titubans	55474
+Bolbitius titubans var. olivaceus	483887
+Bolbitius viscosus	840277
+Boletaceae	48702
+Boletales	48427
+Boletellus chrysenteroides	350195
+Boletinellus merulioides	922275
+Boletopsis	194478
+Boletopsis grisea	499962
+Boletus	48703
+Boletus atkinsonii	350203
+Boletus auripes	366778
+Boletus barrowsii	129328
+Boletus curtisii	352158
+Boletus edulis group	48703
+Boletus edulis var. grandedulis	348829
+Boletus harrisonii	491368
+Boletus miniato-olivaceus	499955
+Boletus miniatopallescens	350212
+Boletus nobilis	500013
+Boletus pallidoroseus	1068083
+Boletus pallidus	1040179
+Boletus roodyi	552829
+Boletus rubriceps	499696
+Boletus sect. Boletus	48703
+Boletus separans	350217
+Boletus separans group	350217
+Boletus spadiceus var. gracilis	1364257
+Boletus subfraternus	565087
+Boletus subtomentosus	485374
+Boletus subvelutipes	125367
+Boletus subvelutipes group	125367
+Boletus tenax	784645
+Boletus variipes	194218
+Boletus variipes group	194218
+Boletus variipes var. fagicola	194217
+Boletus vermiculosoides	468449
+Bondarzewia berkeleyi	84224
+Bonomyces arnoldii	1244434
+Bonomyces sinopicus	842240
+Bothia castanella	468195
+Botryobasidium	118045
+Botryobasidium candicans	1370528
+Botryobasidium capitatum	1235317
+Botryobasidium simile	704761
+Botryosphaeria dothidea	143715
+Bovista	81948
+Brassica oleracea	54516
+Bresadolia	851500
+Britzelmayria multipedata	1179764
+Brunneoporus malicola	1031378
+Bryoperdon acuminatum	972796
+Buchwaldoboletus	353391
+Buchwaldoboletus hemichrysus	350245
+Bulgaria	83421
+Bulgaria inquinans	83419
+Butyriboletus brunneus	499387
+Butyriboletus frostii	501333
+Butyriboletus roseopurpureus	1038811
+Butyriboletus taughannockensis	928228
+Byssocorticium	500174
+Byssocorticium atrovirens	628972
+Byssocorticium caeruleum	884921
+Byssomerulius	118077
+Byssomerulius albostramineus	552843
+Byssomerulius corium	118073
+Byssomerulius corium group	118073
+Byssomerulius incarnatus	136400
+Byssosphaeria schiedermayeriana	1348119
+Cabalodontia	988488
+Calcarisporium arbuscula	409324
+Callistosporiaceae	1128007
+Callistosporium	118357
+Callistosporium luteo-olivaceum	118354
+Callistosporium pseudofelleum	1043326
+Callistosporium purpureomarginatum	500027
+Caloboletus	415479
+Caloboletus inedulis	500026
+Caloboletus marshii	415495
+Caloboletus roseipes	1039219
+Calocera	63408
+Calocera cornea	118027
+Calocybe	358134
+Calocybe carnea	381454
+Calostoma	68157
+Calostoma cinnabarinum	68153
+Calostoma lutescens	372664
+Calostoma ravenelii	207795
+Calvatia	57693
+Calvatia cyathiformis	153296
+Calvatia cyathiformis f. fragilis	350255
+Calvatia gigantea	57692
+Calvatia pachyderma	128579
+Calyptella	374564
+Calyptella capula	499620
+Calyptella gibbosa	552841
+Camarophyllopsis	179229
+Camarophyllopsis deceptiva	1281328
+Camarops petersii	211027
+Camarosporidiella elongata	1362150
+Campanella	353183
+Candelaria concolor	69430
+Candolleomyces	1179953
+Candolleomyces candolleanus	1179954
+Candolleomyces sulcatotuberculosus	1370529
+Cantharellus	47348
+Cantharellus appalachiensis	501610
+Cantharellus californicus	120444
+Cantharellus camphoratus	552731
+Cantharellus chicagoensis	628859
+Cantharellus cinnabarinus group	143393
+Cantharellus formosus	120443
+Cantharellus lateritius	143270
+Cantharellus lateritius group	143270
+Cantharellus lewisii	567082
+Cantharellus minor	143312
+Cantharellus phasmatis group	496875
+Cantharellus roseocanus	499666
+Cantharellus spectaculus	542347
+Cantharellus subg. Parvocantharellus	1366558
+Cantharellus texensis	465861
+Cantharellus velutinus	554193
+Carcinomyces effibulatus	1110075
+Catathelasma ventricosum	196530
+Catathelasmataceae "sp-IN1"	924348
+Caulorhiza umbonata	118361
+Ceratellopsis	932976
+Ceratiomyxa fruticulosa	56252
+Ceratiomyxa fruticulosa var. porioides	702631
+Cerioporus leptocephalus	928232
+Cerioporus mollis	350636
+Cerioporus squamosus	940028
+Cerioporus stereoides	552690
+Cerioporus varius	895267
+Ceriporia	328292
+Ceriporia aurantiocarnescens	985390
+Ceriporia purpurea group	549156
+Ceriporia reticulata	328291
+Ceriporia spissa	344410
+Cerrena unicolor	194476
+Chaenothecopsis caespitosa	1370531
+Chaetosphaerella phaeostroma	566075
+Chalciporus	118365
+Chalciporus piperatoides	118360
+Chalciporus piperatus	147354
+Chalciporus pseudorubinellus	519024
+Cheimonophyllum candidissimum	118362
+Chlorencoelia	325891
+Chlorencoelia versiformis	325890
+Chloridium caesium	1095811
+Chlorociboria	54595
+Chlorociboria aeruginascens	122329
+Chlorophyllum	56536
+Chlorophyllum brunneum	58693
+Chlorophyllum hortense	179126
+Chlorophyllum molybdites	117308
+Chlorophyllum olivieri	424530
+Chlorophyllum rhacodes	56535
+Chlorosplenium chlora	371772
+Chondrostereum purpureum	118036
+Chromelosporium	210241
+Chromosera	118364
+Chromosera cyanophylla	118359
+Chroogomphus	48640
+Chroogomphus ochraceus	118358
+Chroogomphus vinicolor	54208
+Chrysomphalina chrysophylla	484686
+Ciboria rufofusca	326843
+Cistella hungarica	988959
+Cladonia	49490
+Cladonia cervicornis subsp. verticillata	462724
+Cladonia peziziformis	194163
+Cladonia subtenuis	460246
+Clathrus columnatus	54590
+Clathrus ruber	56534
+Claussenomyces olivaceus	860242
+Clavaria	53886
+Clavaria falcata	499782
+Clavaria fragilis group sensu N. Siegel & C.F. Schwarz	53885
+Clavaria zollingeri	126160
+Clavariaceae	49461
+Clavariaceae sensu lato	47169
+Clavariadelphus	55153
+Clavariadelphus ligula	55162
+Clavariadelphus occidentalis	55159
+Claviceps purpurea	360212
+Clavicorona	117501
+Clavulina	63266
+Clavulina castaneipes	1127575
+Clavulina cinerea	125366
+Clavulina coralloides	63260
+Clavulina ornatipes	534308
+Clavulinopsis	55244
+Clavulinopsis appalachiensis	1103950
+Clavulinopsis aurantiocinnabarina	362915
+Clavulinopsis fusiformis	55272
+Clavulinopsis laeticolor	55273
+Clavulinopsis minutula	884920
+Climacodon septentrionalis	350366
+Clitocella	552801
+Clitocella popinalis	552800
+Clitocybe	54625
+Clitocybe "sp-IN10"	54625
+Clitocybe albidula	884912
+Clitocybe americana	155109
+Clitocybe brunneocephala	208113
+Clitocybe coniferophila	884913
+Clitocybe dealbata	737863
+Clitocybe eccentrica	878277
+Clitocybe fasciculata	382932
+Clitocybe formosa	1347531
+Clitocybe fragrans	118370
+Clitocybe metachroa	155061
+Clitocybe nebularis	63255
+Clitocybe nuda	351380
+Clitocybe odora	334677
+Clitocybe peralbida	1100271
+Clitocybe rivulosa	155494
+Clitocybe salmonilamella	118375
+Clitocybe sclerotoidea	118374
+Clitocybe sect. Odorae	334677
+Clitocybe sensu lato	787526
+Clitocybe subditopoda	217208
+Clitocybe tarda	179127
+Clitocybula	146743
+Clitocybula abundans	519054
+Clitocybula lacerata	497395
+Clitocybula lacerata sensu lato	497395
+Clitocybula oculus	146742
+Clitopilus	64709
+Clitopilus hobsonii	381735
+Clitopilus prunulus	64708
+Clitopilus prunulus group	64708
+Clitopilus scyphoides f. reductus	1137181
+Coccomyces dentatus	464803
+Coccomyces triangularis	713751
+Coccomyces tumidus	747608
+Coleosporium montanum	1229436
+Colletotrichum dracaenophilum	884917
+Collybia	154391
+Collybia cookei	340978
+Collybia tuberosa	154390
+Collybiopsis	374622
+Collybiopsis californica	1275333
+Collybiopsis confluens	1275338
+Collybiopsis filamentipes	1275336
+Collybiopsis subpruinosa	1275363
+Coltricia	118040
+Coltricia cinnamomea	118035
+Coltricia montagnei var. greenei	1366563
+Coltricia montagnei var. montagnei	1366564
+Coltricia perennis	118034
+Coltriciella dependens	350405
+Comatricha	56566
+Conferticium ochraceum	830662
+Coniferiporia	895500
+Coniophora arida	118050
+Coniophora olivacea	335983
+Conocybe	117228
+Conocybe apala	117227
+Conocybe apala group	117227
+Conocybe aurea	499601
+Conocybe fuscimarginata	748625
+Conocybe pubescens	381820
+Conocybe tenera group	121765
+Contumyces rosellus	487557
+Copelandia	118262
+Coprinellus	56315
+Coprinellus bipellis	542651
+Coprinellus disseminatus	56314
+Coprinellus disseminatus group	56314
+Coprinellus domesticus	203062
+Coprinellus flocculosus	56316
+Coprinellus impatiens	410688
+Coprinellus micaceus	56318
+Coprinellus radians	154734
+Coprinellus sect. Domestici	947428
+Coprinellus sect. Micacei	947427
+Coprinellus sect. Setulosi	1087209
+Coprinellus subsect. Impatientes	1087209
+Coprinopsis	48522
+Coprinopsis "sp-IN02"	1180074
+Coprinopsis alopecia	851559
+Coprinopsis atramentaria	48521
+Coprinopsis atramentaria group	1180054
+Coprinopsis clastophylla	878393
+Coprinopsis friesii group	56317
+Coprinopsis insignis	332475
+Coprinopsis lagopus	55605
+Coprinopsis lignicola	978306
+Coprinopsis longipes	118272
+Coprinopsis lotinae	924795
+Coprinopsis picacea	63224
+Coprinopsis romagnesiana	371747
+Coprinopsis sect. Atramentariae	1180054
+Coprinopsis sect. Niveae	1180084
+Coprinopsis stercorea	56321
+Coprinopsis strossmayeri	851570
+Coprinopsis subsect. Atramentarii	1180054
+Coprinopsis subsect. Lanatuli	1180062
+Coprinopsis subsect. Marcescibili	1180086
+Coprinopsis subsect. Nivei	1180084
+Coprinopsis variegata	362215
+Coprinopsis variegata group	362215
+Coprinus	47393
+Coprinus calyptratus	56313
+Coprinus comatus	47392
+Coprotus glaucellus	381839
+Coprotus leucopocillum	381868
+Cordyceps	58707
+Cordyceps militaris	119118
+Cordyceps tenuipes	855065
+Cordycipitaceae sensu lato	58706
+Corticiaceae sensu lato	47169
+Corticium	354208
+Cortinarius	48704
+Cortinarius acutus group	381872
+Cortinarius albofragrans	485985
+Cortinarius alboluteus	932655
+Cortinarius anomalus group	1152029
+Cortinarius argentatus	1366566
+Cortinarius atkinsonianus	519056
+Cortinarius bolaris	203804
+Cortinarius caesiocortinatus	1045325
+Cortinarius caperatus	125364
+Cortinarius collinitus group	344629
+Cortinarius conioides	1362632
+Cortinarius corrugatus	125363
+Cortinarius distans	467654
+Cortinarius flavifolius	1152890
+Cortinarius fulvescens	705582
+Cortinarius glaucopus group	58678
+Cortinarius glutinosoarmillatus	623035
+Cortinarius impolitus	1030373
+Cortinarius incognitus	629225
+Cortinarius iodeoideoides	47170
+Cortinarius iodes group	154583
+Cortinarius lucorum	499727
+Cortinarius montanus	500123
+Cortinarius mucosus group	194282
+Cortinarius obtusus group	344640
+Cortinarius odoritraganus	1370535
+Cortinarius olivaceoluteus	1136929
+Cortinarius regalis	499655
+Cortinarius scaurus	500122
+Cortinarius sect. Callochroi	1151859
+Cortinarius sect. Disjungendi	1152365
+Cortinarius sect. Leprocybe	1150620
+Cortinarius sect. Phlegmacioides	1151838
+Cortinarius sect. Pseudotragani	1152388
+Cortinarius sect. Telamonia	1152347
+Cortinarius semisanguineus	125353
+Cortinarius splendidus	1279548
+Cortinarius subg. Dermocybe	123890
+Cortinarius subg. Leprocybe	1150620
+Cortinarius subg. Myxacium	374949
+Cortinarius subg. Phlegmacium	1366568
+Cortinarius subg. Telamonia	1151842
+Cortinarius torvus group	58674
+Cortinarius violaceus	124344
+Cotylidia	342590
+Cotylidia diaphana	350508
+Crassisporium funariophilum	791759
+Crassisporus	1074168
+Craterellus	48611
+Craterellus calyculus	1137794
+Craterellus fallax	194231
+Craterellus foetidus	630206
+Craterellus hesleri	552826
+Craterellus ignicolor	782233
+Craterellus ignicolor group	782233
+Craterellus olivaceus	48611
+Craterellus tubaeformis	350511
+Craterellus tubaeformis group	350511
+Crepidotus	118288
+Crepidotus applanatus	350514
+Crepidotus brunnescens	1370536
+Crepidotus cesatii	350516
+Crepidotus croceotinctus	350518
+Crepidotus crocophyllus	154733
+Crepidotus occidentalis	932939
+Crepidotus stipitatus	565094
+Crepidotus subfulviceps	1127033
+Crinipellis	118284
+Crinipellis setipes	350545
+Crinipellis zonata	471705
+Cronartium quercuum f. fusiforme	465085
+Crucibulum laeve	120030
+Cryptocline taxicola	1044131
+Cryptomarasmius	418441
+Cryptomarasmius exustoides	936579
+Cryptoporus volvatus	118051
+Cudonia circinans	183199
+Cudoniella	374652
+Cudoniella acicularis	382065
+Cudoniella clavus	498074
+Cuphophyllus	361640
+Cuphophyllus angustifolius	361633
+Cuphophyllus colemannianus	485984
+Cuphophyllus lacmus group	1135358
+Cuphophyllus pratensis	361641
+Cuphophyllus pratensis group	361641
+Cuphophyllus recurvatus	1235656
+Cuphophyllus russocoriaceus	485130
+Cuphophyllus virgineus	486380
+Cyanoboletus cyaneitinctus	1293832
+Cyathus	68301
+Cyathus olla	118131
+Cyathus sect. Eucyathus	68301
+Cyathus sect. Olla	118131
+Cyathus stercoreus	120037
+Cyathus striatus	120242
+Cyclaneusma minus	382073
+Cyclocybe cylindracea	578456
+Cyclocybe erebia	628418
+Cylindrobasidium	374318
+Cylindrobasidium evolvens	382077
+Cymatoderma	202465
+Cymatoderma caperatum	202448
+Cyphellaceae sensu lato	47169
+Cyptotrama asprata group	179194
+Cyptotrama chrysopepla	379777
+Cystoagaricus	244782
+Cystoagaricus hirtosquamulosus	602517
+Cystoagaricus subamarus	874464
+Cystoderma	337955
+Cystoderma carcharias var. fallax	475632
+Cystoderma jasonis	382090
+Cystodermella	338134
+Cystodermella adnatifolia	830639
+Cystodermella granulosa	338133
+Cystolepiota	179260
+Cystolepiota seminuda	367291
+Cystostereum murrayi	382093
+Dacrymyces	53280
+Dacrymyces minor	382101
+Dacrymyces stillatus	53276
+Dacryobolus	374322
+Dacryobolus angiospermarum	1366570
+Dacryopinax elegans	350602
+Dacryopinax spathularia	143313
+Daedalea quercina	55973
+Daedaleopsis	124103
+Daedaleopsis confragosa	124102
+Daedaleopsis septentrionalis	499999
+Dasyscyphella nivea	382116
+Datroniella scutellata	548869
+Deconica	379689
+Deconica "sp--1-VRZ-2013"	379689
+Deconica cokeriana	1248709
+Deconica coprophila	528643
+Deconica horizontalis	410966
+Deconica montana	498078
+Deconica phyllogena	1094852
+Delicatula	373940
+Delicatula integrella	498016
+Dendrophora albobadia	202437
+Dendrothele nivosa	382132
+Dennisiomyces "sp--5" sensu Sánchez-García & al.	1366572
+Densocarpa shanorii	1148623
+Dentipellis	353371
+Dentipellis ohiensis	1370537
+Dentocorticium portoricense	785475
+Dermoloma	374682
+Dermoloma sect. Atrobrunnea	1370538
+Desarmillaria tabescens	895035
+Desarmillaria tabescens group	895036
+Deuteromycota	47170
+Diatrype	353179
+Diatrype virescens	417938
+Diatrypella	353182
+Dibaeis baeomyces	117422
+Dichostereum effuscatum	704754
+Dictydiaethalium plumbeum	324282
+Disciotis venosa	126911
+Discomycetes	48250
+Discosia fraxinea	1044130
+Donkia pulcherrima	350365
+Dothideomycetes	55174
+Ductifera pululahuana	320321
+Duplicate	48460
+Echinoderma	542909
+Echinoderma asperum	1280949
+Echinoderma asperum group	542909
+Echinodontium tinctorium	179721
+Eichleriella macrospora	350713
+Elaiopezia waltersii	1245409
+Elaphomyces	175846
+Elaphomyces muricatus group	350719
+Emmia latemarginata	964511
+Endothia gyrosa	381226
+Entocybe	485389
+Entocybe lignicola	1133672
+Entoloma	47165
+Entoloma "sp-IN09"	47165
+Entoloma "sp-IN11"	47165
+Entoloma "sp-IN21"	47165
+Entoloma "sp-TN01"	47165
+Entoloma "sp-TN02"	47165
+Entoloma abortivum	70222
+Entoloma bicolor	499983
+Entoloma canescens group	1366574
+Entoloma conferendum	929426
+Entoloma conicum	558195
+Entoloma cuboideum	932982
+Entoloma dysthales	1037965
+Entoloma dysthaloides	857761
+Entoloma ferruginans	208114
+Entoloma ferruginans group	208114
+Entoloma flavifolium	499621
+Entoloma flavoviride	552723
+Entoloma formosum	485040
+Entoloma formosum group	485040
+Entoloma gainsvillae	1366575
+Entoloma hebes	332484
+Entoloma hirtum	991205
+Entoloma holoconiotum	498111
+Entoloma incanum	67394
+Entoloma lagenicystis	543064
+Entoloma luteum	499979
+Entoloma medianox	447232
+Entoloma multiforme	932984
+Entoloma murinum	884918
+Entoloma murrayi	203674
+Entoloma perumbilicatum	1370539
+Entoloma psammophilohebes	809286
+Entoloma quadratum	362917
+Entoloma rhodopolium group	1366576
+Entoloma sect. Erophila	47165
+Entoloma sect. Fernandae	1370541
+Entoloma sect. Leptonia	54425
+Entoloma strictius group	341614
+Entoloma strictius var. isabellinum	1366577
+Entoloma subg. "Paraeccilia"	47165
+Entoloma subg. Alboleptonia	503944
+Entoloma subg. Claudopus	1366580
+Entoloma subg. Cyanula	1366581
+Entoloma subg. Entoloma	1366583
+Entoloma subg. Inocephalus	1366584
+Entoloma subg. Leptonia	54425
+Entoloma subg. Nolanea	205894
+Entoloma subg. Omphaliopsis	1366585
+Entoloma subg. Pouzarella	178996
+Entoloma subserrulatum	543057
+Entoloma unicolor	499645
+Entoloma velutinum	1126845
+Entoloma vernum group	204774
+Entoloma violaceum	500012
+Entolomataceae	47166
+Entomophthora	55117
+Entonaema liquescens	350744
+Eocronartium muscicola	629268
+Eryniopsis caroliniana	1269994
+Erysiphe cichoracearum	382488
+Erysiphe liriodendri	702299
+Erysiphe lonicerae	558980
+Erysiphe polygoni	334923
+Etheirodon fimbriatum	992719
+Eumycetozoa	47685
+Eupezizella aureliella	1163932
+Eutypa spinosa	520538
+Eutypella quaternata	1158842
+Everhartia lignatilis	1231933
+Exidia crenata	879877
+Exidia glandulosa	55568
+Exidia nigricans	350760
+Exidia recisa	1152051
+Exidiopsis molybdea	1071050
+Exobasidium maculosum	1096710
+Exobasidium rhododendri	366953
+Exobasidium rostrupii	831282
+Exsudoporus frostii	501333
+Favolaschia	83577
+Favolus brasiliensis	350773
+Fayodia sensu lato	47167
+Fibricium	991561
+Fibroporia radiculosa	482941
+Fistulina hepatica	123897
+Fitzroyomyces cyperacearum	1370544
+Flagelloscypha	374749
+Flagelloscypha langloisii	633837
+Flagelloscypha minutissima	633837
+Flammula	374751
+Flammulaster	154755
+Flammulaster carpophilus group	490924
+Flammulaster erinaceellus	154754
+Flammulaster granulosus	1307481
+Flammulaster rhombosporus	490923
+Flammulina	67595
+Flammulina populicola	498109
+Flammulina velutipes	67594
+Flammulina velutipes group	67595
+Fomes	127511
+Fomes fomentarius	127510
+Fomes graveolens	204106
+Fomitopsis mounceae	877361
+Fomitopsis schrenkii	877362
+Fracchiaea broomeana	703152
+Fuligo	55486
+Fuligo septica	55483
+Fulvifomes	179097
+Fulvifomes robiniae	1145488
+Fungi	47170
+Furia ithacensis	475193
+Fuscoporia ferruginosa	995145
+Fuscoporia gilva	896124
+Fuscoporia setifera	704766
+Fusicolla	496778
+Fusicolla merismoides	525059
+Galerella	1095740
+Galerina	118297
+Galerina clavata	118291
+Galerina marginata	154735
+Galerina marginata group	154735
+Galerina sideroides group	416180
+Galerina subg. Galerina	1366586
+Galerina subg. Mycenopsis	1366587
+Galerina subg. Naucoriopsis	1366589
+Galerina subg. Tubariopsis	1366590
+Galerina triscopa	543700
+Galerina vittiformis group	118289
+Galiella rufa	129908
+Gamundia	461423
+Ganoderma	48475
+Ganoderma applanatum	1129535
+Ganoderma curtisii	335051
+Ganoderma curtisii group	335051
+Ganoderma polychromum	479943
+Ganoderma resinaceum group	328280
+Ganoderma sessile	350821
+Ganoderma tsugae	63274
+Gasteromycetes	50814
+Gastroboletus turbinatus	500022
+Gautieria	175807
+Geastrum	63077
+Geastrum floriforme	344606
+Geastrum fornicatum	179257
+Geastrum morganii	179164
+Geastrum pectinatum	1246409
+Geastrum saccatum	63557
+Geastrum schmidelii	350834
+Geastrum striatum	350836
+Geoglossaceae	55238
+Geoglossum difforme	350844
+Geoglossum simile	742778
+Geopora	58689
+Geopora sumneriana	538588
+Geopyxis	118000
+Gerhardtia	416571
+Gerronema nemorale	1366591
+Gerronema strombodes	204813
+Gerronema subclavatum	711548
+Gibellula	328134
+Glabrocyphella ohiensis	1370546
+Gliocladium polyporicola	871741
+Gliophorus	143385
+Gliophorus fenestrae	143385
+Gliophorus irrigatus	499663
+Gliophorus laetus	524919
+Gliophorus laetus group	524919
+Gliophorus laetus var. laetus	524919
+Gliophorus minutulus	499792
+Gliophorus perplexus	348807
+Gliophorus psittacinus	348711
+Gliophorus psittacinus group	348711
+Globifomes graveolens	204106
+Gloeocantharellus purpurascens	1227776
+Gloeocystidiellum	373946
+Gloeomucro dependens	1366592
+Gloeophyllum	67341
+Gloeophyllum sepiarium	67338
+Gloeophyllum trabeum	192652
+Gloeoporus	202427
+Gloeoporus dichrous	202418
+Gloioxanthomyces	622579
+Gloioxanthomyces nitidus	606947
+Gloniopsis subrugosa	884926
+Gomphaceae	48710
+Gomphidius	48425
+Gomphidius glutinosus	48424
+Gomphidius megacarpus	48460
+Granulobasidium vellereum	704764
+Grifola frondosa	53714
+Gymnopilus	83198
+Gymnopilus "sp-IN04"	83198
+Gymnopilus aeruginosus-luteofolius clade sensu Guzmán-Dávalos	83198
+Gymnopilus aurantiophyllus	540875
+Gymnopilus flavidellus	517783
+Gymnopilus fulvosquamulosus	553728
+Gymnopilus josserandii	1134133
+Gymnopilus lepidotus	350918
+Gymnopilus liquiritiae	202420
+Gymnopilus luteofolius	350919
+Gymnopilus luteus	344041
+Gymnopilus picreus group	382515
+Gymnopilus sapineus-penetrans clade	83198
+Gymnopilus speciosissimus	1155108
+Gymnopilus thiersii	475633
+Gymnopilus thiersii group	475633
+Gymnopilus ventricosus	348809
+Gymnopus	55293
+Gymnopus alkalivirens	350936
+Gymnopus androsaceus	382517
+Gymnopus brassicolens group	344922
+Gymnopus confluens	1275338
+Gymnopus dichrous	1275339
+Gymnopus dryophilus	130915
+Gymnopus dysodes	543055
+Gymnopus earleae	629405
+Gymnopus erythropus	179105
+Gymnopus foetidus	120858
+Gymnopus fuscopurpureus group	118301
+Gymnopus impudicus	854427
+Gymnopus iocephalus	340976
+Gymnopus kauffmanii	516999
+Gymnopus polyphyllus	350938
+Gymnopus sect. Impudicae	1366594
+Gymnopus sect. Levipedes	1134711
+Gymnopus semihirtipes	518896
+Gymnopus spongiosus	425183
+Gymnopus subsect. Levipedes	1134711
+Gymnopus subsulphureus	851557
+Gymnosporangium clavipes	129769
+Gymnosporangium juniperi-virginianae	121687
+Gyromitra brunnea	502308
+Gyroporus	125692
+Gyroporus castaneus	125688
+Gyroporus cyanescens	335276
+Gyroporus purpurinus	506466
+Hapalopilus	129039
+Hapalopilus croceus	1008566
+Hapalopilus nidulans	130909
+Hapalopilus rutilans	130909
+Harmajaea	1234529
+Harmajaea harperi	1234531
+Harpographium fasciculatum	704758
+Harrya chromapes	1348168
+Hebeloma	192716
+Hebeloma amarellum	1152806
+Hebeloma arenosum	706118
+Hebeloma cavipes	525422
+Hebeloma crustuliniforme	194307
+Hebeloma crustuliniforme group	192716
+Hebeloma excedens	552805
+Hebeloma megacarpum	791757
+Hebeloma mesophaeum	192715
+Hebeloma sarcophyllum	625288
+Hebeloma sect. Naviculospora	1370547
+Hebeloma sect. Theobromina	1370548
+Hebeloma sinapizans group	344561
+Hebeloma subsect. Clepsydroida	1370550
+Heimiomyces fulvipes	1239846
+Heimiomyces tenuipes	1239845
+Helicogloea	374794
+Helicogloea compressa	978546
+Heliocybe sulcata	179154
+Heliomyces decolorans	903620
+Helminthosphaeria	58712
+Helminthosphaeria clavariarum	58708
+Helotiales	49073
+Helvella	49206
+Helvella acetabulum	57462
+Helvella albella	350975
+Helvella compressa	117997
+Helvella costifera	350979
+Helvella cupuliformis	350980
+Helvella dryophila	354699
+Helvella griseoalba	504624
+Helvella lactea	350985
+Helvella lacunosa	475619
+Helvella macropus	153377
+Helvella sect. Elasticae	1366595
+Helvella solitaria	348176
+Helvella stevensii	350991
+Helvella sulcata	1280966
+Helvella vespertina	423950
+Helvellosebacina concrescens	810810
+Hemimycena	179155
+Hemimycena crispula	1366596
+Hemimycena crispula var. tetraspora	1370552
+Hemimycena cucullata	516746
+Hemimycena sensu lato	416511
+Hemimycena tortuosa	179153
+Hemipholiota populnea	786894
+Hemistropharia albocrenulata	417407
+Hemitrichia	126121
+Hemitrichia serpula	179151
+Henningsomyces	328283
+Henningsomyces candidus	335964
+Hericium	49160
+Hericium coralloides	49162
+Hericium erinaceus	49158
+Herpothallon rubrocinctum	464189
+Hesperomyces	362822
+Hesperomyces virescens	1267749
+Heterobasidiomycetes	47169
+Heterobasidion irregulare	803784
+Heterotextus	143983
+Hexagonia hydnoides	202438
+Hodophilus	499940
+Hodophilus hymenocephalus	499939
+Hodophilus peckianus	1232318
+Hodophilus smithii	1370553
+Hohenbuehelia	154753
+Hohenbuehelia angustata	351008
+Hohenbuehelia grisea	340993
+Hohenbuehelia mastrucata	500043
+Hohenbuehelia petaloides	154750
+Hohenbuehelia petaloides group	154750
+Hohenbuehelia pseudocyphelliformis	1266403
+Holwaya mucida	126908
+Homophron	782234
+Homophron camptopodum	895014
+Homophron spadiceum	782235
+Homophron spadiceum group	782235
+Hortiboletus	544547
+Hortiboletus campestris	839989
+Humaria	58688
+Humaria hemisphaerica	58687
+Humidicutis	125768
+Humidicutis auratocephala	810770
+Humidicutis marginata	125684
+Humidicutis marginata group	125684
+Humidicutis marginata var. marginata	1058418
+Humidicutis marginata var. olivacea	774175
+Hyaloscypha	351111
+Hyaloscyphaceae	176577
+Hydnaceae sensu lato	50814
+Hydnellum	52528
+Hydnellum concrescens group	326130
+Hydnellum peckii	154949
+Hydnellum scabrosum	931835
+Hydnellum spongiosipes	351031
+Hydnobolites	351108
+Hydnochaete olivacea	1038656
+Hydnocristella himantia	552878
+Hydnophlebia chrysorhiza	416734
+Hydnoporia diffissa	1038663
+Hydnoporia olivacea	1038656
+Hydnum	48422
+Hydnum aerostatisporum	857074
+Hydnum mulsicolor	793368
+Hydnum subolympicum	793363
+Hydnum umbilicatum	48421
+Hydropus	175714
+Hydropus omphaliiformis	1126438
+Hydropus omphaliiformis group	1366597
+Hydropus praedecurrens	549352
+Hydropus rugosodiscus	1370554
+Hygrocybe	51871
+Hygrocybe acutoconica	367288
+Hygrocybe acutoconica var. cuspidata	481923
+Hygrocybe appalachianensis	363291
+Hygrocybe aurantiosplendens	203849
+Hygrocybe caespitosa	552732
+Hygrocybe cantharellus	63282
+Hygrocybe ceracea	363606
+Hygrocybe chlorophana group	1135484
+Hygrocybe coccinea	55245
+Hygrocybe conica group	1369384
+Hygrocybe flavescens	1134097
+Hygrocybe laetissima	430531
+Hygrocybe miniata	194659
+Hygrocybe minutula	499792
+Hygrocybe parvula	328212
+Hygrocybe punicea	51869
+Hygrocybe punicea group	1366598
+Hygrocybe purpureofolia	484924
+Hygrocybe sect. Hygrocybe	1101271
+Hygrocybe singeri	118316
+Hygrocybe subsect. Hygrocybe	1135481
+Hygrocybe subsect. Macrosporae	1135482
+Hygrocybe subsect. Squamulosae	1101274
+Hygrocybe turunda	509021
+Hygrophoraceae	51870
+Hygrophoropsis aurantiaca	63538
+Hygrophoropsis aurantiaca var. pallida	63539
+Hygrophorus	63108
+Hygrophorus amarus	884919
+Hygrophorus bakerensis	338344
+Hygrophorus brunneus	63108
+Hygrophorus chrysodon	344545
+Hygrophorus chrysodon sensu CA	344545
+Hygrophorus cokeri	1366599
+Hygrophorus eburneus	67331
+Hygrophorus hypothejus group	1135960
+Hygrophorus occidentalis	118325
+Hygrophorus pusillus	499659
+Hygrophorus roseobrunneus	1029826
+Hygrophorus russula	206118
+Hygrophorus russula group	206118
+Hygrophorus sordidus	194354
+Hygrophorus subsect. Aurei	1135970
+Hygrophorus tennesseensis	703926
+Hymenochaete	202468
+Hymenochaete "odontoides-TN01"	1366600
+Hymenochaete rubiginosa	351061
+Hymenochaetopsis olivacea	1038656
+Hymenochaetopsis tabacina	1038681
+Hymenogaster	353143
+Hymenoscyphus	328023
+Hymenoscyphus fructigenus	351066
+Hyphoderma probatum	884910
+Hyphoderma setigerum group	328286
+Hyphodermella rosae	884923
+Hyphodontia arguta	328272
+Hypholoma	48769
+Hypholoma capnoides	64071
+Hypholoma dispersum	499667
+Hypholoma elongatum	704755
+Hypholoma fasciculare	48767
+Hypholoma flavifolium	499667
+Hypholoma lateritium	130203
+Hypholoma subviride	351081
+Hypholoma tuberosum	382686
+Hypochnicium albostramineum	993014
+Hypocrea	352744
+Hypocrea pulvinata	551439
+Hypocrea schweinitzii group	352595
+Hypocrea sulphurea	525060
+Hypoderma rubi	382730
+Hypomyces	48246
+Hypomyces armeniacus	382734
+Hypomyces aurantius	382735
+Hypomyces cervinus	872335
+Hypomyces chlorinigenus	382736
+Hypomyces chlorinus	1370555
+Hypomyces hyalinus	194271
+Hypomyces lactifluorum	48215
+Hypomyces lateritius	351091
+Hypomyces leotiicola	382760
+Hypomyces luteovirens	125774
+Hypomyces microspermus	379836
+Hypomyces ochraceus	552777
+Hypomyces papulasporae	382741
+Hypomyces stephanomatis	637177
+Hypomyces succineus	627788
+Hypomyces tremellicola	382745
+Hypoxylon	48804
+Hypoxylon crocopeplum	351116
+Hypoxylon perforatum	351165
+Hypoxylon rubiginosum	351179
+Hypsizygus ulmarius	120862
+Hysterium angustatum	351204
+Hysterobrevium mori	327984
+Imleria badia	510854
+Imleria pallida	1040179
+Infundibulicybe	451027
+Infundibulicybe gibba	921916
+Infundibulicybe gibba group	921916
+Inocybaceae	55574
+Inocybe	58679
+Inocybe "sp-IN23"	1090285
+Inocybe "sp-IN60"	1366606
+Inocybe "sp-IN61"	1368063
+Inocybe "sp-IN64"	58679
+Inocybe "sp-IN87"	1366601
+Inocybe adaequata	1112459
+Inocybe adaequata sensu CA	1112459
+Inocybe agglutinata	1021251
+Inocybe armeniaca	993094
+Inocybe asterospora	202387
+Inocybe brunnescens	515814
+Inocybe calamistrata	1112482
+Inocybe calamistrata group	1366602
+Inocybe calospora	351213
+Inocybe chondroderma	865809
+Inocybe cincinnata	118339
+Inocybe cincinnata group	1366603
+Inocybe clade	58679
+Inocybe comatella	1366604
+Inocybe desquamans	1211461
+Inocybe dulciolens	1033871
+Inocybe flocculosa	118333
+Inocybe flocculosa group	1366605
+Inocybe fraudans	513782
+Inocybe fuscodisca	118338
+Inocybe geophylla group	1366601
+Inocybe geophylla group sensu Matheny & Swenie	1366601
+Inocybe grammata	118329
+Inocybe grammata group	1366607
+Inocybe griseolilacina	518220
+Inocybe griseolilacina group	1366608
+Inocybe griseovelata	1021255
+Inocybe grusiana	1366610
+Inocybe hystrix	351221
+Inocybe insinuata	486449
+Inocybe ionocephala	739481
+Inocybe lacera	179766
+Inocybe lacera group	1366611
+Inocybe lanuginosa group	1370556
+Inocybe leucocaulis	1366612
+Inocybe lilacina	1288764
+Inocybe lilacina group sensu Matheny & Swenie	1366614
+Inocybe microlepidota	1368051
+Inocybe microteroxantha	1366615
+Inocybe multicoronata	1048428
+Inocybe napipes	351226
+Inocybe nemorosa	1342060
+Inocybe nucleata	1366616
+Inocybe oblectabilis group	875062
+Inocybe obscuroides	1366618
+Inocybe occulta	1157604
+Inocybe perlucida	1366719
+Inocybe pudica	118342
+Inocybe quercina	1112528
+Inocybe sect. Calosporae	1370557
+Inocybe sect. Hysterices	1368051
+Inocybe sect. Marginatae	1366720
+Inocybe sect. Petiginosae	1366721
+Inocybe sect. Rimosae	1112464
+Inocybe sensu lato	55574
+Inocybe sindonia	416745
+Inocybe sindonia group	1366722
+Inocybe sororia	1112534
+Inocybe stuntzii	1366723
+Inocybe subfulva	704738
+Inocybe subg. Inosperma	1090285
+Inocybe subochracea	952230
+Inocybe subsect. Lacerae	1366611
+Inocybe subsect. Napipedinae	1366606
+Inocybe subsect. Praetervisae	1366612
+Inocybe tahquamenonensis	362502
+Inocybe tubarioides	543056
+Inocybe unicolor	1112051
+Inocybe ventricosa	1031474
+Inocybe xanthomelas group	1366724
+Inonotus	57527
+Inonotus amplectens	926045
+Inonotus cuticularis	344540
+Inonotus obliquus	127021
+Inonotus quercustris	334690
+Inonotus rickii	351239
+Inosperma	1090285
+Inosperma adaequatum	1112459
+Inosperma calamistratum group	1366602
+Inosperma chlorochroum	1366725
+Inosperma lanatodiscum	1112502
+Inosperma maximum	1112501
+Inosperma neobrunnescens	1366727
+Inosperma rimosoides	1112532
+Inosperma vinaceobrunneum	1271612
+Insecta	47158
+Ionomidotis fulvotingens	742552
+Ionomidotis irregularis	505084
+Irpex lacteus	130910
+Isaria	58707
+Ischnoderma	130931
+Ischnoderma resinosum	130919
+Ischnoderma resinosum group	130919
+Jackrogersella cohaerens	979413
+Jafnea	504626
+Jafnea semitosta	701225
+Junghuhnia nitida	1105028
+Kavinia	353094
+Kneiffiella alienata	1019798
+Kneiffiella curvispora	1019812
+Kretzschmaria deusta	128051
+Kuehneromyces lignicola	495391
+Kuehneromyces marginellus	542120
+Kuehneromyces mutabilis	153033
+Kurtia argillacea	1285992
+Laccaria	54895
+Laccaria amethysteo-occidentalis	54893
+Laccaria amethystina	55899
+Laccaria fraterna	382843
+Laccaria laccata	63236
+Laccaria laccata group	1366732
+Laccaria ochropurpurea	143308
+Laccaria proxima	118348
+Laccaria pumila	416607
+Laccaria tortilis	363702
+Lachnella	374837
+Lachnella alboviolascens	408020
+Lachnellula suecica	382857
+Lachnum	203705
+Lachnum impudicum	865821
+Lachnum virgineum	203703
+Lacrymaria	130944
+Lacrymaria lacrymabunda	130934
+Lacrymaria rugocephala	630408
+Lactarius	54597
+Lactarius alnicola	54599
+Lactarius alnicola var. alnicola	54601
+Lactarius areolatus	194383
+Lactarius argillaceifolius	343656
+Lactarius argillaceifolius var. megacarpus	343658
+Lactarius atrobadius	500047
+Lactarius camphoratus	125689
+Lactarius carbonicola	1019393
+Lactarius chelidonium	417706
+Lactarius chrysorrheus	194433
+Lactarius cinereus	351282
+Lactarius croceus	418608
+Lactarius deliciosus group	1303228
+Lactarius deliciosus var. areolatus	1370558
+Lactarius gerardii var. fagicola	325957
+Lactarius griseus	1105821
+Lactarius helvus	194387
+Lactarius indigo	120951
+Lactarius indigo group	1366733
+Lactarius lignyotellus	351295
+Lactarius lignyotus group	194373
+Lactarius maculatus	351296
+Lactarius marylandicus	518870
+Lactarius occidentalis	499748
+Lactarius oculatus	179022
+Lactarius pallescens	194706
+Lactarius paradoxus	417704
+Lactarius peckii	367745
+Lactarius psammicola	502511
+Lactarius psammicola f. glaber	568667
+Lactarius pseudomucidus	351303
+Lactarius pubescens	382882
+Lactarius pubescens var. betulae	790465
+Lactarius pyrogalus group	1366734
+Lactarius quietus var. incanus	568671
+Lactarius resimus var. regalis	1370559
+Lactarius rubidus	55276
+Lactarius rufulus	127216
+Lactarius rufus	118223
+Lactarius sect. Deliciosi	1303228
+Lactarius sect. Zonarii	1370560
+Lactarius speciosus	468080
+Lactarius subg. Plinthogalus	1174533
+Lactarius subg. Russularia	1046273
+Lactarius subplinthogalus	518870
+Lactarius subpurpureus	418018
+Lactarius subsect. Scrobiculati	1366735
+Lactarius subserifluus	543051
+Lactarius subvernalis var. cokeri	418306
+Lactarius thejogalus (Bull.) Gray sensu Hesler & A.H. Sm.	54597
+Lactarius thyinos	504474
+Lactarius torminosus group	351313
+Lactarius turpis	382886
+Lactarius uvidus	344533
+Lactarius uvidus group	344533
+Lactarius vinaceorufescens	155212
+Lactarius xanthogalactus	118224
+Lactifluus	353211
+Lactifluus corrugis	351317
+Lactifluus deceptivus	351318
+Lactifluus deceptivus group	351318
+Lactifluus glaucescens	857351
+Lactifluus hygrophoroides	351320
+Lactifluus hygrophoroides group	351320
+Lactifluus luteolus	928219
+Lactifluus piperatus	351321
+Lactifluus sect. Gerardii	1105801
+Lactifluus subvellereus	351322
+Lactifluus subvellereus var. subdistans	351322
+Lactifluus volemus	503241
+Lactifluus volemus group	1366740
+Lactifluus volemus var. flavus	790319
+Lactocollybia	179136
+Laeticutis cristata	351337
+Laetiporus	48431
+Laetiporus cincinnatus	487301
+Laetiporus gilbertsonii	120154
+Laetiporus huroniensis	549589
+Laetiporus persicinus	525037
+Laetiporus sulphureus	53713
+Laetisaria fuciformis	382888
+Lamprospora tuberculata	909360
+Lanmaoa	544550
+Lanmaoa borealis	1097874
+Lanmaoa pallidorosea	1068083
+Lanmaoa pseudosensibilis	812649
+Lasiobolus intermedius	382901
+Lasiosphaeria	353113
+Lasiosphaeria ovina	409496
+Leccinellum albellum	526350
+Leccinum	54203
+Leccinum crocipodium	363586
+Leccinum longicurvipes	507149
+Leccinum pseudoscabrum	363589
+Leccinum quercophilum	539086
+Leccinum rugosiceps	1199034
+Leccinum snellii	67659
+Lentaria	118124
+Lentaria micheneri	415609
+Lentinellus	118238
+Lentinellus brunnescens	1279525
+Lentinellus cochleatus	351359
+Lentinellus micheneri	332504
+Lentinellus subaustralis	553552
+Lentinellus ursinus	118231
+Lentinula raphanica	509008
+Lentinus	68311
+Lentinus arcularius	791751
+Lentinus arcularius group	791751
+Lentinus berteroi	904697
+Lentinus brumalis	947949
+Lentinus sect. Lentinus	1203422
+Lentinus strigosus	536019
+Lentinus tigrinus	351365
+Lentinus tigrinus f. secotioides	351365
+Lentinus tricholoma	328300
+Lenzites betulinus	786918
+Leocarpus fragilis	56273
+Leotia	58673
+Leotia lubrica	58669
+Leotia lubrica group	58669
+Lepiota	58695
+Lepiota castanea group	379844
+Lepiota clypeolaria group	1366741
+Lepiota cristata	58694
+Lepiota cristata group	1366742
+Lepiota decorata group	1366743
+Lepiota elaiophylla	872747
+Lepiota erminea	854519
+Lepiota lilacea	497834
+Lepiota neophana	499676
+Lepiota rubrotinctoides	415511
+Lepiota subincarnata	382931
+Lepiotaceae	1181093
+Lepista martiorum	553538
+Lepista nuda	351380
+Lepista saeva	713227
+Lepista tarda	179127
+Leptosphaeria acuta	781695
+Leratiomyces ceres	121217
+Leratiomyces percevalii	129323
+Leratiomyces percevalii group	129323
+Leratiomyces squamosus var. thraustus	334046
+Letharia vulpina	54613
+Leucoagaricus	119985
+Leucoagaricus "sp-IN35"	119985
+Leucoagaricus "sp-TN01"	119985
+Leucoagaricus amanitoides	490057
+Leucoagaricus americanus	119984
+Leucoagaricus barssii	348978
+Leucoagaricus dacrytus	1123718
+Leucoagaricus decoratus	486343
+Leucoagaricus flammeatinctus	512203
+Leucoagaricus leucothites	179125
+Leucoagaricus melanotrichus group	1366746
+Leucoagaricus roseilividus	1348474
+Leucoagaricus rubrotinctus	205314
+Leucoagaricus rubrotinctus group	1366747
+Leucoagaricus sect. Leucoagaricus	1366747
+Leucoagaricus sect. Piloselli	1366748
+Leucoagaricus sect. Rubrotincti	1366747
+Leucoagaricus subg. Leucoagaricus	1366747
+Leucoagaricus subg. Sericeomyces	1366749
+Leucoagaricus subsect. Melanotrichae	1366746
+Leucocoprinus	85399
+Leucocoprinus birnbaumii	85398
+Leucocoprinus birnbaumii group	85398
+Leucocoprinus brebissonii	155052
+Leucocoprinus cepistipes	328202
+Leucocoprinus cretaceus	525049
+Leucocoprinus flavescens	525046
+Leucocoprinus fragilissimus	202380
+Leucogyrophana	118232
+Leucogyrophana mollusca	351398
+Leucogyrophana olivascens	351399
+Leucoinocybe lenta	523720
+Leucopaxillus	67347
+Leucopaxillus albissimus	67351
+Leucopaxillus albissimus group	1366750
+Leucopaxillus gentianeus	67346
+Leucopholiota decorosa	478703
+Lichen	47170
+Lichenomphalia umbellifera	118245
+Limacella	118250
+Limacella glioderma	118244
+Limacella glischra	500170
+Limacella sect. Amanitellae	1366751
+Limacella sect. Limacella	1366752
+Limacella sect. Lubricae	1148460
+Lindbladia tubulina	526353
+Lindquistia	972149
+Lindtneria	505093
+Lopharia "fp-105043"	202470
+Lopharia cinerascens	202459
+Lophodermium schweinitzii	1039187
+Loweomyces fractipes	518300
+Lycogala	47681
+Lycogala epidendrum	47680
+Lycoperdon	48444
+Lycoperdon echinatum	343169
+Lycoperdon marginatum	151795
+Lycoperdon perlatum	48443
+Lycoperdon pyriforme	972793
+Lycoperdon umbrinum	118139
+Lyomyces	1019293
+Lyomyces erastii	1019289
+Lyomyces juniperi	1019826
+Lyomyces sambuci	1019876
+Lyophyllaceae	118247
+Lyophyllum	118248
+Lyophyllum "decastes-IN01"	1366754
+Lyophyllum aemiliae	1066520
+Lyophyllum anthracophilum	1264389
+Lyophyllum decastes	118243
+Lysurus mokusin	208065
+Lysurus sphaerocephalus	1244236
+Macrocystidia	49546
+Macrocystidia cucumis	49544
+Macrolepiota	63402
+Macrolepiota procera group	63402
+Macrotyphula juncea	54717
+Mallocybe	906226
+Mallocybe unicolor	1112051
+Marasmiaceae sensu lato	785516
+Marasmiellus	374622
+Marasmiellus "sp-IN02"	49545
+Marasmiellus "sp-TN01"	49545
+Marasmiellus biformis	1275325
+Marasmiellus candidus	118242
+Marasmiellus confluens group	1275338
+Marasmiellus dichrous	1275339
+Marasmiellus flaccidus	1366788
+Marasmiellus luxurians	1275348
+Marasmiellus luxurians group	1275348
+Marasmiellus peronatus	1275360
+Marasmiellus praeacutus	702652
+Marasmiellus quercophilus	1275361
+Marasmiellus ramealis	1275332
+Marasmiellus subnudus	1275362
+Marasmiellus subpruinosus	1275363
+Marasmiellus tenerrimus var. setulosus	1366789
+Marasmiellus vaillantii	1275364
+Marasmiellus villosipes	1275365
+Marasmiineae	785516
+Marasmius	54067
+Marasmius "sp-TN01"	54067
+Marasmius albogriseus	351452
+Marasmius bellipes	491519
+Marasmius calhouniae	118241
+Marasmius capillaris	334044
+Marasmius cohaerens	324151
+Marasmius delectans	480393
+Marasmius felix	552816
+Marasmius floridanus	480395
+Marasmius fulvoferrugineus	351468
+Marasmius graminum	351470
+Marasmius maximus	552792
+Marasmius nigrodiscus	497730
+Marasmius oreades	118240
+Marasmius pallidocephalus	1134702
+Marasmius plicatulus	55291
+Marasmius pulcherripes	204856
+Marasmius quercophilus	1275361
+Marasmius rotula	63100
+Marasmius sect. Globulares	1366790
+Marasmius sect. Marasmius	1366791
+Marasmius sect. Sicci	1366790
+Marasmius siccus	136398
+Marasmius siccus group	1366792
+Marasmius strictipes	351496
+Marasmius sullivantii	484923
+Marchandiobasidium aurantiacum	955592
+Massospora cicadina	383056
+Megacollybia	63285
+Megacollybia rodmani	488500
+Megacollybia rodmanii	488500
+Megacollybia rodmanii f. murina	1262220
+Melanconium stromaticum	932943
+Melanogaster	353130
+Melanoleuca	332511
+Melanoleuca cognata	499766
+Melanoleuca griseobrunnea	782373
+Melanoleuca lewisii	518948
+Melanoleuca verrucipes	415637
+Melanophyllum	374890
+Melanophyllum haematospermum	383085
+Membranomyces delectabilis	989026
+Membranomyces spurius	1144750
+Menispora cobaltina	932980
+Meottomyces	499805
+Meripilus sumstinei	125738
+Merismodes fasciculata	524415
+Merismodes mellea	1370561
+Meruliaceae sensu lato	50814
+Meruliopsis	353122
+Meruliopsis taxicola	351558
+Meruliporia incrassata	118072
+Merulius tremellosus	179113
+Metarhizium	328137
+Metarhizium blattodeae	1366794
+Metatrichia	126278
+Metuloidea fragrans	984472
+Metuloidea reniformis	1349238
+Microglossum	205763
+Microglossum fumosum	499626
+Microglossum rufum	322931
+Microglossum viride	351568
+Micromphale	55293
+Micromphale sequoiae	1071959
+Microporellus	202457
+Microporellus obovatus	202442
+Microstoma floccosum	58714
+Mitrula lunulatospora	928052
+Mixed collection	48460
+Mollisia	118025
+Monotropa	49478
+Monotropa uniflora	49477
+Montagnea	353053
+Montagnea arenaria	351592
+Morchella americana	462132
+Morchella angusticeps	133686
+Morchella diminutiva	127217
+Morchella esculenta	58682
+Morchella punctipes	133684
+Morchella rufobrunnea	206090
+Morchella sect. Morchella	1062674
+Mucronella	118074
+Mucronella calva var. aggregata	1366795
+Mucronella subalpina	966195
+Multiclavula mucida	205261
+Mutinus elegans	84271
+Mycena	55922
+Mycena "sp-IN5"	55922
+Mycena abramsii	63423
+Mycena acicula	63426
+Mycena aetites	410728
+Mycena albiceps	1032457
+Mycena alcalina group	179707
+Mycena amicta	63433
+Mycena amicta group	1366797
+Mycena aprilis	1046684
+Mycena atkinsoniana	570899
+Mycena aurantiomarginata	367289
+Mycena californiensis	337490
+Mycena carolinensis	1241013
+Mycena chloroxantha var. appalachienensis	559736
+Mycena citrinomarginata	63436
+Mycena clavicularis	63441
+Mycena clavularis	703734
+Mycena confinationis	1366799
+Mycena corticola	423924
+Mycena crocea	504601
+Mycena epipterygia	179107
+Mycena epipterygia group	1366800
+Mycena filopes	63466
+Mycena galericulata	63446
+Mycena galopus	55923
+Mycena haematopus	63460
+Mycena inclinata	63453
+Mycena inclinata group	63453
+Mycena leaiana	128516
+Mycena leptocephala	63470
+Mycena mucor	383197
+Mycena niveipes	574073
+Mycena odorifera	1254240
+Mycena olida	786106
+Mycena oregonensis	63472
+Mycena picta	1239856
+Mycena pura	63473
+Mycena pura group	1370907
+Mycena purpureofusca	63422
+Mycena rubromarginata	739098
+Mycena rutilantiformis	499642
+Mycena sanguinolenta	118253
+Mycena sect. Calodontes	1101287
+Mycena sect. Pictae	633079
+Mycena sect. Sacchariferae	1101289
+Mycena sensu lato	785516
+Mycena stylobates	519021
+Mycena subcaerulea	325981
+Mycena tenerrima	332513
+Mycena vulgaris	518976
+Mycenaceae	55920
+Mycenastrum corium	128578
+Mycenella	374936
+Mycetinis	203670
+Mycetinis copelandii	366164
+Mycetinis olidus	773721
+Mycetinis opacus	565099
+Mycetinis scorodonius	203669
+Mycetozoa	47685
+Mycoacia nothofagi	383554
+Mycoacia uda	155078
+Mycogone calospora	852455
+Mycogone rosea	383218
+Mycopan	506144
+Mycopan scabripes	499784
+Mycorrhaphium	324141
+Mycorrhaphium adustum	470496
+Myochromella	820728
+Myxarium	374950
+Myxarium nucleatum	742831
+Myxogastria	338324
+Nectria balansae group	887198
+Nectria sensu lato	48248
+Nemania beaumontii	932935
+Neoalbatrellus subcaeruleoporus	607285
+Neoantrodia serialiformis	955499
+Neoboletus brunneosquamulosus	553906
+Neoboletus chamaeleon	553906
+Neoboletus varietatibus	553906
+Neobulgaria pura	63068
+Neocudoniella radicella	552856
+Neoerysiphe galeopsidis	565414
+Neofavolus	496175
+Neofavolus alveolaris	496176
+Neofavolus suavissimus	953102
+Neofavolus subpurpurascens	981468
+Neohygrocybe	179139
+Neohygrocybe nitrata	1135296
+Neohygrocybe ovina	1135293
+Neohygrocybe subovina	552729
+Neolecta irregularis	125756
+Neolentinus	311293
+Neolentinus kauffmanii	499671
+Neolentinus lepideus	351629
+Neonothopanus	552694
+Nidula	118140
+Nidularia pulvinata	120040
+Nidulariaceae	121439
+Nigroporus vinosus	351637
+Niveoporofomes spraguei	940037
+Non-fungal	48460
+Nostoc	67332
+Nostoc commune	319815
+Odonticium laxum	830650
+Oligoporus	353033
+Oligoporus fragilis	959326
+Oliveonia pauxilla	1370562
+Omphalotaceae	64013
+Omphalotus illudens	126831
+Omphalotus olivascens	67752
+Omphalotus subilludens	567087
+Onnia tomentosa	491859
+Ophelimus	377417
+Ophiocordyceps	179205
+Ophiocordyceps elongata	932978
+Ophiocordyceps gracilioides	518867
+Ophiocordyceps kimflemingiae	891940
+Ophiocordyceps ravenelii	552838
+Ophiocordyceps stylophora	905165
+Ophiocordyceps superficialis	518975
+Ophiocordyceps variabilis	552853
+Ossicaulis	451354
+Ossicaulis lignatilis	516040
+Otidea	57369
+Otidea alutacea clade sensu Olariaga et al.	57369
+Otidea unicisa	906989
+Oudemansiella	55965
+Oudemansiella canarii	351659
+Oudemansiella furfuracea	785472
+Oudemansiella incognita	1098336
+Oudemansiella megalospora	921910
+Oudemansiella sect. Radicatae	1228819
+Oxyporus obducens	1149665
+Oxyporus similis	351661
+Pachyphlodes	703365
+Pachyphlodes annagardnerae	1353441
+Pachyphlodes virescens group	703371
+Panaeolina	118262
+Panaeolopsis	517786
+Panaeolus	118262
+Panaeolus antillarum	348989
+Panaeolus bisporus	1347939
+Panaeolus cinctulus	418443
+Panaeolus cinctulus group	418443
+Panaeolus fimicola	351673
+Panaeolus foenisecii	902551
+Panaeolus foenisecii group	902551
+Panaeolus guttulatus	940982
+Panaeolus papilionaceus	118263
+Panaeolus papilionaceus group	118263
+Panaeolus semiovatus	124539
+Pandora phalangicida	906190
+Panellus	68308
+Panellus pusillus	351677
+Panellus stipticus	68309
+Panus conchatus	59249
+Panus lecomtei	536019
+Panus strigellus	706221
+Paragalactinia succosa	1110786
+Paragymnopus	1071958
+Paralepista	806589
+Paralepista flaccida	841424
+Parasola	56311
+Parasola auricoma	56309
+Parasola conopilea	830766
+Patellaria atrata	351693
+Patellariaceae	352586
+Paxillus	55943
+Paxillus cuprinus	416322
+Paxillus involutus	55941
+Peltigera membranacea	117858
+Peniophora	55879
+Peniophora boidinii	830657
+Peniophora cinerea	335978
+Peniophora incarnata	55877
+Peniophorella	328285
+Peniophorella pubera	628370
+Peniophorella subpraetermissa	830638
+Perenniporia medulla-panis	351711
+Perenniporia subacida	1349231
+Perenniporia tenuis	351715
+Peziza	57372
+Peziza atrovinosa	351730
+Peziza domiciliana	319053
+Peziza griseorosea	1025104
+Peziza labessiana	1110798
+Peziza michelii	1110789
+Peziza phyllogena	1110795
+Peziza varia	411300
+Pezizaceae	57373
+Phaeoclavulina abietina	351744
+Phaeocollybia	175457
+Phaeocollybia christinae	351752
+Phaeohelotium monticola	1045154
+Phaeolus schweinitzii	118084
+Phaeolus schweinitzii group	118084
+Phaeomarasmius	118264
+Phaeomarasmius erinaceus	118261
+Phaeomarasmius proximans	636145
+Phaeosphaeriopsis glaucopunctata	1020039
+Phaeotremella foliacea	901819
+Phaeotremella frondosa	786052
+Phallus hadriani	128521
+Phallus rugulosus	793759
+Phanerochaete carnosa	628508
+Phanerochaete magnoliae	1156005
+Phanerochaete tuberculata	830634
+Phellinus	118087
+Phellinus pomaceus	410639
+Phellinus sensu lato	57518
+Phellinus tremulae	351800
+Phellodon	179736
+Phellodon confluens	351803
+Phellodon fuligineoalbus	830648
+Phellodon niger	332674
+Phellodon violascens	1148372
+Phlebia	118085
+Phlebia acerina	118080
+Phlebia coccineofulva	154752
+Phlebia incarnata	136400
+Phlebia ludoviciana	704743
+Phlebia radiata	155122
+Phlebia setulosa	1019898
+Phlebia tremellosa	179113
+Phlebiopsis crassa	851949
+Phlebiopsis flavidoalba	932975
+Phleogena faginea	203926
+Phloeomana	499764
+Phloeomana clavata	932938
+Phloeomana speirea	499673
+Pholiota	64076
+Pholiota adiposa	351817
+Pholiota adiposa group	1145088
+Pholiota angustipes	629213
+Pholiota aurivella	124705
+Pholiota castanea	1145725
+Pholiota decorata	481607
+Pholiota decorata group	481607
+Pholiota flammans	64075
+Pholiota granulosa	466792
+Pholiota highlandensis	351822
+Pholiota highlandensis group	1366805
+Pholiota lenta	351824
+Pholiota mixta	745954
+Pholiota parvula	1370564
+Pholiota polychroa	417402
+Pholiota pseudosiparia	999620
+Pholiota scamba	383581
+Pholiota sect. Flavidula	1370566
+Pholiota sect. Spumosae	1145095
+Pholiota spumosa	351827
+Pholiota squarrosa	153445
+Pholiota squarrosoides	157728
+Pholiota stratosa	1366807
+Pholiota subg. Flammuloides	1366809
+Pholiota subsulphurea	704760
+Pholiota terrestris	118266
+Pholiotina	118269
+Pholiotina "aeruginosa-IN01"	1047567
+Pholiotina aporos	874938
+Pholiotina cyanopus	552744
+Pholiotina intermedia	1349034
+Pholiotina rugosa	877494
+Pholiotina sect. Pholiotina	1366810
+Pholiotina vexans	381772
+Phragmidium	205077
+Phragmidium mucronatum	383622
+Phycomyces	319606
+Phylloporopsis boletinoides	790371
+Phylloporus	205872
+Phylloporus arenicola	118155
+Phylloporus leucomycelinus	194223
+Phylloporus rhodoxanthus	130936
+Phylloporus rhodoxanthus subsp. americanus	1370568
+Phylloscypha phyllogena	1110795
+Phyllosticta	319634
+Phyllosticta mahoniicola f. microspora	1370570
+Phyllotopsis nidulans	52529
+Physalacria	341856
+Physalacriaceae	55931
+Physarum	68858
+Physarum psittacinum	503891
+Physcia millegrana	200925
+Physisporinus crocatus	1039875
+Physisporinus lineatus	895519
+Physisporinus pouzarii	974797
+Picipes badius	510852
+Piptoporus betulinus	775410
+Pirex concentricus	464790
+Pisolithus	63839
+Pisolithus arenarius	1127196
+Pisolithus arhizus group	1366812
+Plantae	47126
+Pleurocybella porrigens	48509
+Pleuroflammula	375067
+Pleuroflammula flammea	1266402
+Pleuromyces hungaricus	1370572
+Pleurotus	48496
+Pleurotus cystidiosus	460346
+Pleurotus dryinus	334340
+Pleurotus levis	1247035
+Pleurotus ostreatus	1196165
+Pleurotus populinus	468509
+Pleurotus pulmonarius	136399
+Pleurotus pulmonarius group	136399
+Pleurotus sensu lato	50814
+Plicaria carbonaria	823643
+Plicariella	557766
+Plicariella flavovirens	874469
+Plicaturopsis crispa	55565
+Pluteus	60783
+Pluteus albostipitatus group	328234
+Pluteus americanus	515583
+Pluteus atromarginatus	118268
+Pluteus aurantiorugosus	351886
+Pluteus cervinus	60782
+Pluteus cervinus group	1366816
+Pluteus chrysaegis	878390
+Pluteus chrysophlebius	351889
+Pluteus deceptivus	704757
+Pluteus ephebeus group	351890
+Pluteus fuliginosus	552837
+Pluteus glaucotinctus group	981457
+Pluteus granularis	499692
+Pluteus hispidulus group	517826
+Pluteus hongoi	516992
+Pluteus leoninus	564369
+Pluteus leoninus group	1366817
+Pluteus longistriatus	154756
+Pluteus longistriatus group	154756
+Pluteus methvenii	552815
+Pluteus petasatus	347897
+Pluteus podospileus group	628417
+Pluteus romellii	64087
+Pluteus romellii group	64087
+Pluteus salicinus group	118281
+Pluteus saupei	519059
+Pluteus sect. Celluloderma	1366819
+Pluteus sect. Hispidoderma	1366820
+Pluteus sect. Pluteus	1366821
+Pluteus septocystidiatus	967136
+Pluteus seticeps	1073559
+Pluteus seticeps var. cystidiosus	1073559
+Pluteus subsect. Mixtini	1370573
+Pluteus thomsonii group	118277
+Pluteus variabilicolor	1358208
+Podaxis	57884
+Podonectria	328001
+Podoscypha	120493
+Polycephalomyces	375079
+Polycephalomyces tomentosus	518858
+Polyporales	47380
+Polyporales sensu lato	50814
+Polyporus	50884
+Polyporus "sp-IN01"	510853
+Polyporus arcularius	791751
+Polyporus craterellus	965532
+Polyporus fagicola	1370574
+Polyporus leptocephalus	928232
+Polyporus mcmurphyi	1121110
+Polyporus radicatus	204635
+Polyporus tuberaster	351927
+Pontania	334169
+Poria sensu lato	50814
+Porodisculus pendulus	126946
+Poronidulus conchifer	880970
+Porotheleaceae	416511
+Porotheleum	375085
+Porotheleum fimbriatum	383807
+Porphyrellus	353207
+Porphyrellus porphyrosporus	351944
+Porpidia albocaerulescens	125773
+Porpolomopsis calyptriformis	1061811
+Postia	118070
+Postia caesia group	959236
+Postia fragilis	959326
+Postia lateritia	959327
+Postia livens	1228460
+Postia ptychogaster	499650
+Postia tephroleuca	383815
+Propolis farinosa	351949
+Protocrea pallida	959885
+Protostropharia	499759
+Psathyrella	67745
+Psathyrella atrospora	349080
+Psathyrella bipellis	383829
+Psathyrella candolleana	1179954
+Psathyrella candolleana group	1179953
+Psathyrella corrugis	357767
+Psathyrella corrugis group	1366823
+Psathyrella cotonea	629041
+Psathyrella debilis	932956
+Psathyrella delineata	201340
+Psathyrella friesii	966197
+Psathyrella incerta	627795
+Psathyrella longipes	118272
+Psathyrella longistriata	118274
+Psathyrella marcescibilis var. virginea	490750
+Psathyrella microrhiza	383831
+Psathyrella orbitarum	1370575
+Psathyrella pennata	355895
+Psathyrella potteri	875138
+Psathyrella prona	383833
+Psathyrella prona group	383833
+Psathyrella psammophila	905852
+Psathyrella sect. Spadiceogriseae	1179784
+Psathyrella sensu lato	56310
+Psathyrella subamara	874464
+Psathyrella subg. Psathyrella	1179801
+Psathyrella sublatispora	1370577
+Psathyrella subsect. Obtusatae	633205
+Psathyrella tephrophylla	1006543
+Psathyrella tuberculata	1179965
+Psathyrellaceae	56310
+Pseudoarmillariella ectypoides	351967
+Pseudobaeospora	375098
+Pseudoboletus parasiticus	125724
+Pseudoclitocybe cyathiformis	339415
+Pseudodactylaria	1370578
+Pseudohydnum gelatinosum	54164
+Pseudohydropus	1370579
+Pseudoinonotus dryadeus	787944
+Pseudoinonotus dryadeus group	787944
+Pseudolaccaria	922758
+Pseudolaccaria pachyphylla	922759
+Pseudomerulius aureus	351975
+Pseudomerulius curtisii	179045
+Pseudonectria buxi	830658
+Pseudoomphalina	499690
+Pseudoomphalina anticostica	1370581
+Pseudoomphalina cokeri	1096400
+Pseudoomphalina compressipes	1027400
+Pseudoplectania	352992
+Pseudosperma	1112464
+Pseudosperma notodryinum	1304384
+Pseudosperma sororium	1112534
+Pseudosperma sororium group	1366824
+Pseudosperma squamatum	1112538
+Pseudotomentella humicola	1367062
+Pseudotricholoma umbrosum	629549
+Psilocybe allenii	348831
+Psilocybe caerulescens	206124
+Psilocybe caerulipes	206899
+Psilocybe cubensis	328244
+Psilocybe cyanescens	179085
+Psilocybe ovoideocystidiata	348835
+Psiloglonium stygium	1235315
+Psilopezia	375114
+Psora	123511
+Pterula	328240
+Puccinia	84769
+Puccinia andropogonis	628443
+Puccinia coronata	358129
+Puccinia evadens	123045
+Puccinia lagenophorae	200848
+Puccinia mariae-wilsoniae	243710
+Puccinia oxalidis	84767
+Puccinia violae	352146
+Pulveroboletus ravenelii	352159
+Pulverulina ulmicola	1366828
+Pulvinula laeterubra	1266405
+Punctularia strigosozonata	706442
+Purpureocillium atypicola	823761
+Pycnoporellus fulgens	367273
+Pycnoporus cinnabarinus	974663
+Pycnoporus coccineus	974661
+Pyrrhulomyces astragalinus	1179671
+Radulomyces confluens	384040
+Radulomyces copelandii	1113584
+Ramaria	48707
+Ramaria apiculata	118129
+Ramaria fennica	179036
+Ramaria sect. Formosae	1366829
+Ramaria stricta	54228
+Ramaricium	375126
+Ramaricium polyporoideum	384058
+Ramariopsis	55275
+Ramariopsis crocea	384067
+Rectipilus confertus	1305890
+Rectipilus davidii	830637
+Resinomycena	379471
+Resinomycena rhododendri	704744
+Resupinatus	203715
+Resupinatus alboniger	426274
+Resupinatus applicatus	203714
+Resupinatus poriaeformis	384107
+Resupinatus striatulus	482170
+Resupinatus trichotis	384108
+Retiboletus	348833
+Retiboletus griseus	499627
+Retiboletus ornatipes	348815
+Reticularia	126272
+Reticularia lycoperdon	145366
+Rhizomarasmius pyrrhocephalus	546288
+Rhizopogon	62475
+Rhizopogon occidentalis	118137
+Rhizopogon roseolus	194079
+Rhizopogon subaustralis	1370582
+Rhizopus stolonifer	245693
+Rhodocollybia	118165
+Rhodocollybia butyracea	118166
+Rhodocollybia maculata	118168
+Rhodocollybia maculata group	1366830
+Rhodocybe	118172
+Rhodocybe caelata	500160
+Rhodocybe hondensis	746601
+Rhodocybe nitellina	496868
+Rhodofomes cajanderi	764105
+Rhodophana	496872
+Rhodophana nitellina	496868
+Rhodotus	481483
+Rhopalogaster transversarius	1044907
+Rhynchophoma	1370584
+Rhytidhysteron	352583
+Rhytidhysteron hysterinum	417679
+Rhytidhysteron rufulum	352259
+Rhytisma acerinum	130935
+Rhytisma americanum	552771
+Rhytisma prini	932979
+Rhytisma punctatum	333838
+Rickenella fibula	118170
+Rickenella swartzii	118171
+Rigidoporus populinus	1149663
+Rimbachia	118176
+Rimbachia bryophila	118173
+Ripartitella brasiliensis	352261
+Ripartites	334220
+Ripartites tricholoma	334219
+Roridomyces	155181
+Roridomyces roridus	179021
+Rosellinia	352576
+Rosellinia corticium	352264
+Rosellinia hyalospora	830651
+Rosellinia subiculata	352268
+Royoporus badius	510852
+Rubroboletus rhodosanguineus	628416
+Russula	48339
+Russula "sp-FL01"	48339
+Russula adusta	194408
+Russula amoenolens	62725
+Russula ballouii	415435
+Russula brevipes	118179
+Russula brevipes group	1366831
+Russula brevipes var. acrior	118178
+Russula cerolens	337492
+Russula cessans	517781
+Russula compacta	125750
+Russula cremoricolor	118187
+Russula crustosa	118495
+Russula crustosa group	118495
+Russula cyanoxantha group	1167952
+Russula densissima	1370586
+Russula dissimulans	118186
+Russula earlei	470937
+Russula earlei group	470937
+Russula eccentrica	118185
+Russula eccentrica group	118185
+Russula flavida	348994
+Russula foetentula	352285
+Russula fragilis group	1366832
+Russula granulata	629228
+Russula hixsonii	551691
+Russula maculata group	423666
+Russula mariae	203673
+Russula michiganensis	552797
+Russula parvovirescens	126178
+Russula pulverulenta	552795
+Russula sect. Nigricantes	1366833
+Russula sect. Virescentinae	1370587
+Russula subg. Brevipedum	1366831
+Russula subg. Heterophyllidiae	1167952
+Russula subsect. Foetentinae	1366834
+Russula subsect. Nigricantes	1366833
+Russula subsect. Sphagnophilinae	1370589
+Russula variata	194432
+Russula vinacea	194442
+Russula xerampelina group	154875
+Russulaceae	48340
+Rutstroemiaceae	328028
+Saccobolus minimoides	956605
+Sagaranella tylicolor	906437
+Sanghuangporus weirianus	1026543
+Sarcodon	122336
+Sarcodon atroviridis	179073
+Sarcodon imbricatus	122335
+Sarcodontia	203700
+Sarcodontia pachyodon	1248679
+Sarcodontia setosa	491520
+Sarcomyxa serotina	63585
+Sarcoscypha	49136
+Sarcoscypha austriaca	126913
+Sarcoscypha occidentalis	58705
+Sarcosomataceae	57371
+Schizophyllum	54575
+Schizophyllum commune	54573
+Schizoporaceae	118063
+Sclerococcum stygium	1234240
+Scleroderma	55929
+Scleroderma areolatum	203805
+Scleroderma bovista	194501
+Scleroderma cepa group	118147
+Sclerogaster	375161
+Sclerotiniaceae	204631
+Scorias spongiosa	144013
+Scotomyces subviolaceus	384234
+Scutellinia	49138
+Scutellinia erinaceus	510899
+Scutellinia scutellata group	49138
+Scutellinia setosa	130856
+Scutellinia umbrorum	352343
+Scytinostroma	328318
+Scytinostroma protrusum	704741
+Scytinotus ringens	499721
+Sebacina	328325
+Sebacina incrustans	352364
+Sebacina incrustans group	352364
+Sebacina schweinitzii	736008
+Sebacina sparassoidea	363529
+Seifertia azaleae	384247
+Septoria viriditingens	1023518
+Serpula himantioides	409595
+Sertulicium jacksonii	1370590
+Sidera	524423
+Sidera lenis	524424
+Simocybe	328220
+Simocybe centunculus	343174
+Simocybe haustellaris	500090
+Simocybe serrulata	765006
+Singerocybe	416782
+Singerocybe adirondackensis	629727
+Sirococcus tsugae	891414
+Sistotrema	118091
+Sistotrema brinkmannii	408249
+Sistotrema octosporum	830632
+Sistotrema porulosum	1285812
+Sistotrema raduloides	578798
+Sistotrema subtrigonospermum	1144748
+Sistotremastrum suecicum	881001
+Skeletocutis lilacina	605619
+Skeletocutis semipileata	896528
+Sparassis americana	546504
+Sparassis spathulata	334319
+Spathularia flavida	231270
+Spathulariopsis velutipes	322859
+Sphaerobolus stellatus	55012
+Sphaerosporium lignatile	552563
+Sphaerostilbella aurifila	868397
+Sphaerostilbella penicilloides	939201
+Spinellus fusiger	425360
+Spodocybe	1319547
+Spongipellis	334440
+Spongipellis pachyodon	1248679
+Spongipellis unicolor	352406
+Sporophagomyces	559336
+Sporophagomyces chrysostomus	565092
+Sporormiella intermedia	384382
+Sporothrix epigloea	1095660
+Steccherinum	118097
+Steccherinum bourdotii	717370
+Steccherinum ochraceum	118096
+Steccherinum robustius	854521
+Stemonitidaceae	53840
+Stemonitis	53841
+Stereaceae sensu lato	50814
+Stereopsis	352478
+Stereum	55503
+Stereum complicatum	196842
+Stereum fasciatum	352456
+Stereum gausapatum	332685
+Stereum hirsutum	55501
+Stereum hirsutum group	55501
+Stereum lobatum	1031780
+Stereum striatum	118105
+Stereum subtomentosum	155081
+Stictidaceae	174713
+Stilbella	328154
+Stilbella fimetaria	384448
+Strobilomyces	125713
+Strobilomyces strobilaceus	352462
+Strobilurus	133083
+Strobilurus albipilatus	118193
+Strobilurus conigenoides	418310
+Strobilurus occidentalis	499672
+Stromatocyphella conglobata	1366837
+Stropharia	53283
+Stropharia ambigua	53284
+Stropharia coronilla	352465
+Stropharia hardii	326041
+Stropharia rugosoannulata	119151
+Stropharia rugosoannulata f. lutea	551074
+Strophariaceae	48768
+Subantrodia juniperina	1032403
+Suillellus amygdalinus	430157
+Suillus	53490
+Suillus americanus	125716
+Suillus bellinii	499617
+Suillus brevipes	63496
+Suillus decipiens	638305
+Suillus fuscotomentosus	118162
+Suillus granulatus sensu auct. amer.	179065
+Suillus grevillei	147277
+Suillus kaibabensis	552831
+Suillus lakei var. pseudopictus	1370592
+Suillus luteus	53488
+Suillus placidus	499954
+Suillus pungens	118158
+Suillus spraguei	782231
+Suillus subaureus	499664
+Suillus tomentosus	118157
+Suillus weaverae	543035
+Sutorius eximius	518723
+Syzygites megalocarpus	366755
+Syzygospora	204678
+Taphrina deformans	244392
+Taphrina robinsoniana	334457
+Tapinella atrotomentosa	154450
+Tapinella panuoides	118202
+Tarzetta	210409
+Tarzetta cupularis	352484
+Tatraea macrospora	154757
+Taxodiomyia cupressi	133715
+Tectella patellaris	978480
+Terana coerulea	1159218
+Tetrapyrgos	179064
+Tetrapyrgos nigripes	179063
+Tetrapyrgos subdendrophora	408271
+Thanatephorus	375137
+Thaxterogaster subg. Scauri	1366840
+Thelephora	118110
+Thelephora albidobrunnea	1024254
+Thelephora americana	925725
+Thelephora anthocephala	118101
+Thelephora cuticularis	778594
+Thelephora multipartita	517821
+Thelephora palmata	118100
+Thelephora regularis	352506
+Thelephora scissilis	830642
+Thelephora terrestris	118102
+Thelephora vialis	352511
+Thelephoraceae	118108
+Thuemenella cubispora	352519
+Thyronectria zanthoxyli	1370593
+Tilachlidium	488679
+Tolypocladium	375252
+Tolypocladium capitatum	518873
+Tolypocladium ophioglossoides	499797
+Tomentella	118109
+Tomentella bicolor	830645
+Tomentella fuscocinerea clade	118109
+Torula aquatica	1370594
+Trametella trogii	1365936
+Trametes	47378
+Trametes aesculi	490889
+Trametes betulina	786918
+Trametes cinnabarina	974663
+Trametes conchifer	880970
+Trametes gibbosa	410641
+Trametes gibbosa group	410641
+Trametes hirsuta	116695
+Trametes lactinea	328305
+Trametes ochracea	118111
+Trametes pubescens	203711
+Trametes suaveolens	352556
+Trametes versicolor	1153556
+Trametes villosa	328309
+Trametopsis cervina	485771
+Trechispora	118118
+Trechispora laevis	1018896
+Trechispora nivea	875179
+Tremella	48532
+Tremella foliacea	901819
+Tremella fuciformis	143384
+Tremella mesenterica	48529
+Tremellodendron pallidum	736008
+Tremellodendron schweinitzii	736008
+Tremellodendron tenax	566465
+Tremellodendropsis	55236
+Tremellodendropsis tuberosa	55235
+Trichaptum	118119
+Trichaptum abietinum	118115
+Trichaptum biforme	125705
+Trichaptum byssogenum	352585
+Trichiaceae	56276
+Trichobolus	373996
+Trichocybe	701207
+Trichoderma	352744
+Trichoderma alutaceum	891983
+Trichoderma leucopus	940016
+Trichoderma peltatum	788243
+Trichoderma sulphureum	525060
+Trichoglossum	55239
+Trichoglossum farlowii	384574
+Trichoglossum hirsutum	55240
+Trichoglossum octopartitum	384575
+Tricholoma	62484
+Tricholoma albobrunneum	118200
+Tricholoma argyraceum	340559
+Tricholoma aurantio-olivaceum	499600
+Tricholoma aurantium	194448
+Tricholoma caligatum group sensu Besette et al.	125704
+Tricholoma columbetta	352605
+Tricholoma dryophilum	67345
+Tricholoma equestre group	118215
+Tricholoma fracticum	411133
+Tricholoma fulvum	372273
+Tricholoma griseoviolaceum	118214
+Tricholoma inamoenum	473050
+Tricholoma intermedium	384579
+Tricholoma murrillianum	521711
+Tricholoma myomyces var. cystidiotum	1366844
+Tricholoma odorum	638118
+Tricholoma portentosum	194460
+Tricholoma saponaceum group	1366845
+Tricholoma scalpturatum	340560
+Tricholoma sect. Genuina	1366846
+Tricholoma stanford-gray	1366847
+Tricholoma sulphurescens	629227
+Tricholoma terreum	341797
+Tricholoma terreum group	1366847
+Tricholoma yatesii	425345
+Tricholomatineae	787526
+Tricholomopsis decora	194395
+Tricholomopsis decora group	194395
+Tricholomopsis flammula	552730
+Tricholomopsis rutilans	63387
+Trichopeziza	375266
+Trichopeziza mollissima	1252240
+Trichophaea pseudogregaria	782335
+Trichothecium roseum	384591
+Tripospermum camelopardus	932944
+Tropicoporus	904667
+Truncospora	627433
+Truncospora ohiensis	351713
+Tubaria	55575
+Tubaria conspersa	118217
+Tubaria furfuracea	55573
+Tubaria furfuracea group	55573
+Tubaria punicea	120971
+Tubaria romagnesiana	776974
+Tubariaceae	416523
+Tuber	120278
+Tuber "sp-66"	120278
+Tuber longisporum	1266404
+Tuber puberulum clade	946890
+Tubifera ferruginosa	126522
+Tulasnella	335994
+Tulasnella aurantiaca	1195407
+Tulasnella violea	335992
+Tulosesus	1087209
+Tulostoma	60903
+Turbinellus	352983
+Turbinellus floccosus	417398
+Tylopilus	63482
+Tylopilus alboater	63488
+Tylopilus atratus	552820
+Tylopilus atronicotianus	513885
+Tylopilus badiceps	194227
+Tylopilus balloui	1271693
+Tylopilus felleus	63489
+Tylopilus ferrugineus	352689
+Tylopilus griseocarneus	565089
+Tylopilus indecisus	194228
+Tylopilus plumbeoviolaceus	146681
+Tylopilus rubrobrunneus	352692
+Tylopilus sordidus	1031282
+Tylopilus variobrunneus	500009
+Typhrasa	1111864
+Typhrasa delineata group	1111864
+Typhrasa gossypina	1111865
+Typhula	335949
+Typhula crassipes	1019074
+Tyromyces chioneus	130946
+Tyromyces galactinus	352696
+Undetermined	48460
+Uredinopsis americana	628438
+Urnula	58713
+Urnula craterium	58709
+Uromyces ari-triphylli	359001
+Usnea strigosa group	121176
+Ustilago maydis	151802
+Vanderbylia robiniophila	1124969
+Vararia investiens	384715
+Vascellum	48444
+Vascellum curtisii	121715
+Veloporphyrellus conicus	810565
+Veluticeps	118112
+Veluticeps fimbriata	498108
+Venturia inaequalis	203151
+Verpa bohemica	126131
+Verpa conica	118002
+Vibrissea	375294
+Vibrissea truncorum	434762
+Virgariella	352960
+Volvariella	63421
+Volvariella bombycina	128074
+Volvariella nigrodisca	1142403
+Volvariella pusilla	352832
+Volvariella taylorii	352834
+Volvopluteus gloiocephalus	348720
+Woldmaria filicina	707783
+Wrightoporia austrosinensis	1024411
+Wrightoporia avellanea	740803
+Wynnea	57368
+Xanthoconium affine	415611
+Xanthoconium purpureum	498505
+Xanthoconium stramineum	1037020
+Xanthoporia andersonii	537039
+Xanthoria elegans	532267
+Xenasma praeteritum	384746
+Xenasmatella	328313
+Xenasmatella vaga	352847
+Xerocomellus	416305
+Xerocomellus dryophilus	438002
+Xerocomellus mendocinensis	484956
+Xerocomellus truncatus sensu CA	484956
+Xerocomus	118154
+Xerocomus hortonii	1097811
+Xerocomus illudens	552817
+Xerocomus morrisii	499971
+Xerocomus sclerotiorum	984331
+Xeromphalina	56253
+Xeromphalina campanella group	1366848
+Xeromphalina campanelloides	956832
+Xeromphalina cauticinalis subsp. pubescentipes	630273
+Xeromphalina fulvipes	1239846
+Xeromphalina tenuipes	1239845
+Xylaria	55268
+Xylaria acuta	966189
+Xylaria apiculata group	179053
+Xylaria carpophila	348993
+Xylaria corniformis	352880
+Xylaria cubensis	1366851
+Xylaria cubensis group	55268
+Xylaria hypoxylon	55267
+Xylaria hypoxylon group	1366853
+Xylaria liquidambar	1366854
+Xylaria liquidambaris	1366854
+Xylaria longipes	352912
+Xylaria magnoliae	352916
+Xylaria mali	932974
+Xylaria poitei	352938
+Xylaria polymorpha	58698
+Xylaria polymorpha group	58698
+Xylaria tentaculata	352953
+Xylaria vasconica	966163
+Xylariales	48805
+Xylobolus frustulatus	130947
+Xylobolus illudens	384416
+Xylobolus subpileatus	340840
+Xylodon	499312
+Xylodon flaviporus	886998
+Xylodon laurentianus	1348224
+Xylodon paradoxus	785474
+Xylodon quercinus	1019844
+Xylohypha	353018
+Yuchengia narymica	956712
+Zhuliangomyces	877187
+Zygomycota	55113
+Zythia resinae	1225577
